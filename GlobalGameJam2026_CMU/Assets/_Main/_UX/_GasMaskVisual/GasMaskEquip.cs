@@ -18,6 +18,7 @@ public class GasMaskEquip : MonoBehaviour
         }
         
         // === just for testing ===
+        Debug.LogWarning("There is test code running for GasMaskEquip, delete this for final build");
         while (true)
         {
             EquipMask();

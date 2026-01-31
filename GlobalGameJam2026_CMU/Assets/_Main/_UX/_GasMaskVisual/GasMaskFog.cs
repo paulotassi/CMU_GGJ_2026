@@ -11,6 +11,7 @@ public class GasMaskFog : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        Debug.LogWarning("There is test code running for GasMaskFog, delete this for final build");
         SetBreathingSpeed(2f);
     }
 

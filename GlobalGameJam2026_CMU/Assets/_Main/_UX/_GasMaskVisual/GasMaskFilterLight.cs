@@ -17,6 +17,7 @@ public class GasMaskFilterLight : MonoBehaviour
     /// <returns></returns>
     IEnumerator Start()
     {
+        Debug.LogWarning("There is test code running for GasMaskFilterLight, delete this for final build");
         while (true)
         {
             SetFilterLightColor(LightColor.Green);
