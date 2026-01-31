@@ -3,7 +3,6 @@ using UnityEngine;
 public class Key : Interactable
 {
     [SerializeField] private int keyID;
-    [SerializeField] private Collider pickUpZone;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,12 +16,14 @@ public class Key : Interactable
         //if(pickUpZone)
     }
 
-    public override void Interact(GameObject other = null)
+    public override bool Interact(GameObject other)
     {
         Debug.Log("Picked up key: " + keyID);
         // Add key to player's inventory logic here
-
+        
+        other.GetComponent<PlayerController>().AddKeyToInventory(keyID);
         // Destroy key object after pickup
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
+        return true;
     }
 }
