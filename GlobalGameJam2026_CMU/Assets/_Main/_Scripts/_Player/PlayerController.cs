@@ -257,10 +257,11 @@ public class PlayerController : MonoBehaviour
         Ray ray = playerCamera.ViewportPointToRay(
             new Vector3(0.5f, 0.5f, 0f));
 
-        if (!Physics.Raycast(ray, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
             if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
             {
+                Debug.Log("Hi");
                 keypadButton.PressButton();
                 //return;
             }
@@ -304,7 +305,6 @@ public class PlayerController : MonoBehaviour
         // }
         
         if(currInteractableZone != null)
-        
         {
             Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
             if (!currInteractableZone.interactPressed())
