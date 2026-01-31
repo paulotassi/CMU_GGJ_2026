@@ -1,7 +1,14 @@
 // Commented by ChatGPT
 
+using System.Collections.Generic;
+using System.Numerics;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
+using Quaternion = UnityEngine.Quaternion;
+using NavKeypad;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,11 +33,21 @@ public class PlayerController : MonoBehaviour
 
     public float mouseSensitivity = 0.1f;                  // Mouse look sensitivity (raw delta)
     public float controllerSensitivity = 120f;             // Controller look sensitivity (scaled)
+    private float verticalVelocity;
+
+
+    [Header("Mask Info")]
+    public int maxHeldMasks = 1000;
+    public int currMaskAmount = 1;
+
+    [Header("Key Info")]
+    public int totalKeys = 0;
+    public int maxHeldKeys = 3;
 
     #endregion
 
     #region Health / Vitals
-
+    [Header("Health Info")]
     public int startingPlayerHealth = 100;                 // Initial player health
     public int startingGasMaskHealth = 100;                // Initial gas mask durability
 
@@ -45,6 +62,13 @@ public class PlayerController : MonoBehaviour
 
     private float pitch;                                   // Vertical camera rotation (clamped)
     private Camera playerCamera;                           // Reference to FPS camera
+    private CharacterController characterController;       // CharacterController for collision-based movement
+
+    private int[] keyInventory;
+
+    private bool maskAnimation = false;
+
+    private InteractableZone currInteractableZone = null;
 
     #endregion
 
@@ -55,6 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInputAction();              // Instantiate input wrapper
         playerCamera = GetComponentInChildren<Camera>();    // Locate child camera
+        characterController = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;           // Lock cursor to center
         Cursor.visible = false;                             // Hide cursor
@@ -62,6 +87,8 @@ public class PlayerController : MonoBehaviour
         playerHealth = startingPlayerHealth;                // Initialize player health
         gasMaskHealth = startingGasMaskHealth;              // Initialize mask health
         maskEquipped = false;                               // Mask starts unequipped
+        keyInventory = new int[maxHeldKeys];                      // Initialize key inventory
+
     }
 
     // Enables input map and subscribes to input events
@@ -94,14 +121,18 @@ public class PlayerController : MonoBehaviour
 
         if (interactPressedThisFrame)
         {
+            Debug.Log("Interact Pressed");
             HandleInteract();                              // Process interaction
             interactPressedThisFrame = false;              // Consume flag
         }
 
-        if (attackPressedThisFrame)
+        if (attackPressedThisFrame && !maskAnimation)
         {
             ToggleMaskEquip();                             // Equip / unequip mask
             attackPressedThisFrame = false;                // Consume flag
+            //Eventually needs cooldown
+            StartCoroutine(MaskAnimation());
+            
         }
     }
 
@@ -123,19 +154,94 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Mask Equip
+    #region General Interactable Management
+
+    public void setInteractableZone(InteractableZone iz)
+    {
+        currInteractableZone = iz;
+    }
+    public void removeInteractableZone()
+    {
+        setInteractableZone(null);
+    }
+
+    #endregion
+    #region Mask Management
 
     // Toggles gas mask equip state (cannot equip if broken)
     private void ToggleMaskEquip()
     {
-        if (!maskEquipped && gasMaskHealth <= 0)            // Prevent equipping broken mask
+        if (!maskEquipped && gasMaskHealth <= 0 && currMaskAmount <= 0)            // Prevent equipping broken mask
         {
             return;
         }
-
+        
         maskEquipped = !maskEquipped;                       // Toggle state
+
+    }    
+
+    public bool addMask()
+    {
+        if(currMaskAmount >= maxHeldMasks)
+        {
+            Debug.Log("Cannot pick up more gas masks");
+            return false;
+        }
+        Debug.Log("Picked up gas mask");
+        currMaskAmount++;
+        return true;
     }
 
+    public IEnumerator MaskAnimation()
+    {
+        if (maskEquipped)
+        {
+            //Play Animation
+            //EventManager.EquipMask();
+            yield return new WaitForSeconds(0.5f); //Equip Animation time
+        }
+        else
+        {
+            //Play Animation
+            //EventManager.DequipMask();
+            yield return new WaitForSeconds(0.5f); //Dequip Animation time
+        }
+        maskAnimation = false;
+
+    }
+
+
+    #endregion
+
+    #region Key Management
+
+    public void AddKeyToInventory(int keyID)
+    {
+        keyInventory[keyID]++;
+    }
+
+    public bool HasKey(int keyID)
+    {
+        return keyInventory[keyID] > 0;
+    }
+
+    public void UseKey(int keyID)
+    {
+        if (HasKey(keyID))
+        {
+            keyInventory[keyID]--;
+        }
+    }
+
+    public int GetCurrKeys()
+    {
+        int count = 0;
+        foreach (int keyCount in keyInventory)
+        {
+            count += keyCount;
+        }
+        return count;
+    }
     #endregion
 
     #region Interaction
@@ -148,30 +254,76 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Creates a ray from the exact center of the screen (crosshair)
         Ray ray = playerCamera.ViewportPointToRay(
-            new Vector3(0.5f, 0.5f, 0f));                   // Viewport space: (0,0)=bottom-left, (1,1)=top-right
+            new Vector3(0.5f, 0.5f, 0f));
 
-        // Fires ray forward and stores hit info if something is hit within distance
-        if (!Physics.Raycast(ray, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
-            return;
+            if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
+            {
+                Debug.Log("Hi");
+                keypadButton.PressButton();
+                //return;
+            }
+            //return;
         }
 
-        // Attempts to retrieve Interactable component from hit object
-        if (!hit.collider.TryGetComponent(out Interactable interactable))
-        {
-            return;
-        }
+        // // Attempts to retrieve Interactable component from hit object
+        // if (!hit.collider.TryGetComponent(out Interactable interactable))
+        // {
+        //     return;
+        // }
 
-        if (interactable.isGrabbable())
+        // if (interactable.isGrabbable())
+        // {
+        //     //Need to add logic where player discovers the type of object and interacts whichever way it needs to be interacted.
+        //     //MAX
+        //     //Yup right here
+        //     //Dw tassi i gotchu
+        //     switch (interactable.getInteractableType())
+        //     {
+        //         case Interactable.InteractableType.Key:
+                    
+        //             break;
+        //         case Interactable.InteractableType.Door:
+        //             //Door failed to open
+        //             if (!interactable.Interact(gameObject))
+        //             {
+        //                 //Do something
+        //             }
+        //             else
+        //             {
+                        
+        //             }
+        //             break;
+        //         case Interactable.InteractableType.GasMask:
+        //             interactable.Interact(gameObject);
+        //             break;
+        //     }
+        //     //Hopefully you see this comment
+        //     Debug.Log("I can grab this item!... well I just tried to");
+        // }
+        
+        if(currInteractableZone != null)
         {
-            //Need to add logic where player discovers the type of object and interacts whichever way it needs to be interacted.
-            //MAX
-            //Yup right here
-            //Hopefully you see this comment
+            Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
+            if (!currInteractableZone.interactPressed())
+            {
+                //
+                Debug.Log("Door was locked or too many masks");
+            }
+            else
+            {
+                //Successful interaction
+                Debug.Log("Successful Interaction");
+            }
+        }
+        else
+        {
             Debug.Log("I can grab this item!... well I just tried to");
+            return;
         }
+
     }
 
     #endregion
@@ -182,14 +334,23 @@ public class PlayerController : MonoBehaviour
     void HandleMove()
     {
         Vector3 move =
-            (transform.right * moveInput.x) +               // Left / right movement
-            (transform.forward * moveInput.y);              // Forward / backward movement
+            (transform.right * moveInput.x) +
+            (transform.forward * moveInput.y);
 
         float speed = sprintInput > 0
-            ? moveSpeed * sprintSpeed                       // Sprinting
-            : moveSpeed;                                    // Walking
+            ? moveSpeed * sprintSpeed
+            : moveSpeed;
 
-        transform.position += move * speed * Time.deltaTime; // Frame-rate independent movement
+        if (characterController.isGrounded && verticalVelocity < 0f)
+        {
+            verticalVelocity = -2f;
+        }
+
+        verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
+        Vector3 velocity = (move * speed) + Vector3.up * verticalVelocity;
+
+        characterController.Move(velocity * Time.deltaTime);
     }
 
     #endregion
@@ -201,35 +362,34 @@ public class PlayerController : MonoBehaviour
     {
         bool usingGamepad =
             Gamepad.current != null &&
-            Gamepad.current.wasUpdatedThisFrame;             // Detect active gamepad input this frame
+            Gamepad.current.wasUpdatedThisFrame;
 
         float sensitivity =
-            usingGamepad ? controllerSensitivity             // Higher base sensitivity for sticks
-                          : mouseSensitivity;                // Lower sensitivity for mouse deltas
+            usingGamepad ? controllerSensitivity
+                          : mouseSensitivity;
 
-        float yaw = lookInput.x * sensitivity;               // Horizontal rotation
-        float lookY = lookInput.y * sensitivity;             // Vertical rotation
+        float yaw = lookInput.x * sensitivity;
+        float lookY = lookInput.y * sensitivity;
 
         if (usingGamepad)
         {
-            yaw *= Time.deltaTime;                           // Normalize stick input
+            yaw *= Time.deltaTime;
             lookY *= Time.deltaTime;
         }
 
-        pitch -= lookY;                                      // Invert vertical look
-        pitch = Mathf.Clamp(pitch, -89f, 89f);               // Prevent camera flip
+        pitch -= lookY;
+        pitch = Mathf.Clamp(pitch, -89f, 89f);
 
         playerCamera.transform.localRotation =
-            Quaternion.Euler(pitch, 0f, 0f);                 // Apply pitch to camera only
+            Quaternion.Euler(pitch, 0f, 0f);
 
-        transform.Rotate(Vector3.up * yaw);                  // Apply yaw to player body
+        transform.Rotate(Vector3.up * yaw);
     }
 
     #endregion
 
     #region Damage Routing
 
-    // Entry point for damage that should respect gas mask shielding
     public void takeDamage(int damage)
     {
         if (damage <= 0)
@@ -237,31 +397,30 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (maskEquipped && gasMaskHealth > 0)               // Mask absorbs damage first
+        if (maskEquipped && gasMaskHealth > 0)
         {
             ApplyDamageToMaskThenSpillover(damage);
             return;
         }
 
-        ApplyDamageToPlayer(damage);                          // Direct damage
+        ApplyDamageToPlayer(damage);
     }
 
-    // Applies damage to mask, then spills remaining damage to player if mask breaks
     private void ApplyDamageToMaskThenSpillover(int damage)
     {
-        int maskBefore = gasMaskHealth;                      // Store pre-damage mask health
+        int maskBefore = gasMaskHealth;
 
-        gasMaskHealth -= damage;                             // Apply damage to mask
+        gasMaskHealth -= damage;
 
         if (gasMaskHealth > 0)
         {
-            return;                                          // Mask absorbed everything
+            return;
         }
 
         gasMaskHealth = 0;
         maskBroke();
 
-        int leftoverDamage = damage - maskBefore;            // Remaining damage after mask depletion
+        int leftoverDamage = damage - maskBefore;
 
         if (leftoverDamage > 0)
         {
@@ -269,7 +428,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Applies damage directly to player health
     private void ApplyDamageToPlayer(int damage)
     {
         if (playerHealth > 1)
@@ -280,8 +438,6 @@ public class PlayerController : MonoBehaviour
             {
                 playerHealth = 0;
             }
-
-            //EventManager.PlayerTookDamage();
         }
 
         if (playerHealth <= 0)
@@ -294,29 +450,32 @@ public class PlayerController : MonoBehaviour
 
     #region Death / Mask Break
 
-    // Handles player death
     private void playerDied()
     {
-        //EventManager.PlayerDied();
-        
     }
 
-    // Handles gas mask destruction
     private void maskBroke()
     {
         if (maskEquipped)
         {
-            maskEquipped = false;                            // Force unequip broken mask
+            maskEquipped = false;
         }
 
         //EventManager.EquippedMaskBroke();
+
+        if(currMaskAmount > 0)
+        {
+            currMaskAmount--;
+            ToggleMaskEquip();
+        }
+
+        
     }
 
     #endregion
 
     #region Gizmos
 
-    // Draws interaction ray in Scene view for debugging
     void OnDrawGizmos()
     {
         if (!Application.isPlaying || playerCamera == null)
