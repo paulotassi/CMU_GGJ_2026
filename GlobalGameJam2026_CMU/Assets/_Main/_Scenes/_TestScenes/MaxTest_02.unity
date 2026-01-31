@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableZone
   zoneType: 2
-  interactable: {fileID: 1716500105}
+  interactable: {fileID: 1517914663}
 --- !u!135 &375921024
 SphereCollider:
   m_ObjectHideFlags: 0
