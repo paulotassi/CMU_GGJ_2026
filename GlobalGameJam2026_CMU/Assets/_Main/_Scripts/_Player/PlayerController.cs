@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
+using NavKeypad;
 
 public class PlayerController : MonoBehaviour
 {
@@ -256,6 +257,11 @@ public class PlayerController : MonoBehaviour
         // Fires ray forward and stores hit info if something is hit within distance
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
+            if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
+            {
+                keypadButton.PressButton();
+                return;
+            }
             //return;
         }
 
