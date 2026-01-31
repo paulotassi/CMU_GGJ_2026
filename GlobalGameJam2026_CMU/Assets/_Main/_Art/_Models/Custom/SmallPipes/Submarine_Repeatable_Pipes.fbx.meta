@@ -3,7 +3,12 @@ guid: d3e1e68cc6174734a9051337a9a976c7
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Submarine_Repeatable_Pipes
+    second: {fileID: 2100000, guid: 5886b1788177b13409c635a306365124, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
