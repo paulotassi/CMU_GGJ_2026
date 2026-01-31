@@ -88,14 +88,15 @@ public class PlayerController : MonoBehaviour
         // IMPORTANT:
         // Subscribe to the Interact action event so it fires ONCE per press.
         // This avoids "held key = spam every frame".
-        playerInput.Player.Interact.performed += OnInteractPerformed;
+        
+        playerInput.Player.Interact.started += OnInteractPerformed;
     }
 
     // Disable action map and unhook input events
     void OnDisable()
     {
         // Unsubscribe from events to prevent duplicate subscriptions / memory issues
-        playerInput.Player.Interact.performed -= OnInteractPerformed;
+        playerInput.Player.Interact.started -= OnInteractPerformed;
 
         // Disable the map so we stop receiving inputs
         playerInput.Player.Disable();
@@ -122,8 +123,8 @@ public class PlayerController : MonoBehaviour
         // then we consume it here and immediately reset it.
         if (interactPressedThisFrame)
         {
-            interactPressedThisFrame = false;
             HandleInteract();
+            interactPressedThisFrame = false;
         }
     }
 
