@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     public float mouseSensitivity = 0.1f;                  // Mouse look sensitivity (raw delta)
     public float controllerSensitivity = 120f;             // Controller look sensitivity (scaled)
+    private float verticalVelocity;
+
 
     #endregion
 
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private float pitch;                                   // Vertical camera rotation (clamped)
     private Camera playerCamera;                           // Reference to FPS camera
+    private CharacterController characterController;       // CharacterController for collision-based movement
 
     #endregion
 
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInputAction();              // Instantiate input wrapper
         playerCamera = GetComponentInChildren<Camera>();    // Locate child camera
+        characterController = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;           // Lock cursor to center
         Cursor.visible = false;                             // Hide cursor
@@ -148,17 +152,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Creates a ray from the exact center of the screen (crosshair)
         Ray ray = playerCamera.ViewportPointToRay(
-            new Vector3(0.5f, 0.5f, 0f));                   // Viewport space: (0,0)=bottom-left, (1,1)=top-right
+            new Vector3(0.5f, 0.5f, 0f));
 
-        // Fires ray forward and stores hit info if something is hit within distance
         if (!Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
             return;
         }
 
-        // Attempts to retrieve Interactable component from hit object
         if (!hit.collider.TryGetComponent(out Interactable interactable))
         {
             return;
@@ -166,10 +167,6 @@ public class PlayerController : MonoBehaviour
 
         if (interactable.isGrabbable())
         {
-            //Need to add logic where player discovers the type of object and interacts whichever way it needs to be interacted.
-            //MAX
-            //Yup right here
-            //Hopefully you see this comment
             Debug.Log("I can grab this item!... well I just tried to");
         }
     }
@@ -182,14 +179,23 @@ public class PlayerController : MonoBehaviour
     void HandleMove()
     {
         Vector3 move =
-            (transform.right * moveInput.x) +               // Left / right movement
-            (transform.forward * moveInput.y);              // Forward / backward movement
+            (transform.right * moveInput.x) +
+            (transform.forward * moveInput.y);
 
         float speed = sprintInput > 0
-            ? moveSpeed * sprintSpeed                       // Sprinting
-            : moveSpeed;                                    // Walking
+            ? moveSpeed * sprintSpeed
+            : moveSpeed;
 
-        transform.position += move * speed * Time.deltaTime; // Frame-rate independent movement
+        if (characterController.isGrounded && verticalVelocity < 0f)
+        {
+            verticalVelocity = -2f;
+        }
+
+        verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
+        Vector3 velocity = (move * speed) + Vector3.up * verticalVelocity;
+
+        characterController.Move(velocity * Time.deltaTime);
     }
 
     #endregion
@@ -201,35 +207,34 @@ public class PlayerController : MonoBehaviour
     {
         bool usingGamepad =
             Gamepad.current != null &&
-            Gamepad.current.wasUpdatedThisFrame;             // Detect active gamepad input this frame
+            Gamepad.current.wasUpdatedThisFrame;
 
         float sensitivity =
-            usingGamepad ? controllerSensitivity             // Higher base sensitivity for sticks
-                          : mouseSensitivity;                // Lower sensitivity for mouse deltas
+            usingGamepad ? controllerSensitivity
+                          : mouseSensitivity;
 
-        float yaw = lookInput.x * sensitivity;               // Horizontal rotation
-        float lookY = lookInput.y * sensitivity;             // Vertical rotation
+        float yaw = lookInput.x * sensitivity;
+        float lookY = lookInput.y * sensitivity;
 
         if (usingGamepad)
         {
-            yaw *= Time.deltaTime;                           // Normalize stick input
+            yaw *= Time.deltaTime;
             lookY *= Time.deltaTime;
         }
 
-        pitch -= lookY;                                      // Invert vertical look
-        pitch = Mathf.Clamp(pitch, -89f, 89f);               // Prevent camera flip
+        pitch -= lookY;
+        pitch = Mathf.Clamp(pitch, -89f, 89f);
 
         playerCamera.transform.localRotation =
-            Quaternion.Euler(pitch, 0f, 0f);                 // Apply pitch to camera only
+            Quaternion.Euler(pitch, 0f, 0f);
 
-        transform.Rotate(Vector3.up * yaw);                  // Apply yaw to player body
+        transform.Rotate(Vector3.up * yaw);
     }
 
     #endregion
 
     #region Damage Routing
 
-    // Entry point for damage that should respect gas mask shielding
     public void takeDamage(int damage)
     {
         if (damage <= 0)
@@ -237,31 +242,30 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (maskEquipped && gasMaskHealth > 0)               // Mask absorbs damage first
+        if (maskEquipped && gasMaskHealth > 0)
         {
             ApplyDamageToMaskThenSpillover(damage);
             return;
         }
 
-        ApplyDamageToPlayer(damage);                          // Direct damage
+        ApplyDamageToPlayer(damage);
     }
 
-    // Applies damage to mask, then spills remaining damage to player if mask breaks
     private void ApplyDamageToMaskThenSpillover(int damage)
     {
-        int maskBefore = gasMaskHealth;                      // Store pre-damage mask health
+        int maskBefore = gasMaskHealth;
 
-        gasMaskHealth -= damage;                             // Apply damage to mask
+        gasMaskHealth -= damage;
 
         if (gasMaskHealth > 0)
         {
-            return;                                          // Mask absorbed everything
+            return;
         }
 
         gasMaskHealth = 0;
         maskBroke();
 
-        int leftoverDamage = damage - maskBefore;            // Remaining damage after mask depletion
+        int leftoverDamage = damage - maskBefore;
 
         if (leftoverDamage > 0)
         {
@@ -269,7 +273,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Applies damage directly to player health
     private void ApplyDamageToPlayer(int damage)
     {
         if (playerHealth > 1)
@@ -280,8 +283,6 @@ public class PlayerController : MonoBehaviour
             {
                 playerHealth = 0;
             }
-
-            //EventManager.PlayerTookDamage();
         }
 
         if (playerHealth <= 0)
@@ -294,29 +295,22 @@ public class PlayerController : MonoBehaviour
 
     #region Death / Mask Break
 
-    // Handles player death
     private void playerDied()
     {
-        //EventManager.PlayerDied();
-        
     }
 
-    // Handles gas mask destruction
     private void maskBroke()
     {
         if (maskEquipped)
         {
-            maskEquipped = false;                            // Force unequip broken mask
+            maskEquipped = false;
         }
-
-        //EventManager.EquippedMaskBroke();
     }
 
     #endregion
 
     #region Gizmos
 
-    // Draws interaction ray in Scene view for debugging
     void OnDrawGizmos()
     {
         if (!Application.isPlaying || playerCamera == null)
