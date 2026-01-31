@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
             if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
             {
                 keypadButton.PressButton();
-                return;
+                //return;
             }
             //return;
         }
