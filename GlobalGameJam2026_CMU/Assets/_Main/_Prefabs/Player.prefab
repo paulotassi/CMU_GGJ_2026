@@ -358,5 +358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 5
-  mouseSensitivity: 0.8
+  sprintSpeed: 2
+  mouseSensitivity: 0.1
   controllerSensitivity: 100
