@@ -13,6 +13,7 @@ public class InteractableZone : MonoBehaviour
     [SerializeField] private ZoneType zoneType;
     
     private bool isPlayerInZone = false;
+    private PlayerController playerController;
     public Interactable interactable;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,9 @@ public class InteractableZone : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            Debug.Log("Player entered");
+            playerController = other.GetComponent<PlayerController>();
+            playerController.setInteractableZone(this);
             isPlayerInZone = true;
             interactable.setGrabbable(true);
             
@@ -39,29 +43,34 @@ public class InteractableZone : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            playerController.removeInteractableZone();
+            playerController = null;
             isPlayerInZone = false;
             interactable.setGrabbable(false);
         }
     }
 
-    void interactPressed()
+    public bool interactPressed()
     {
         if(isPlayerInZone && interactable.isGrabbable())
         {   
-            //interactable.Interact(gameObject);
-
+            return interactable.Interact(playerController.gameObject);
         }
+
+        //Should never occur
+        Debug.Log("How did we even get here");
+        return false;
     }
 
-    ///In player:
-    /// 
-    /// void OnTriggerEnter(Collider other)
-    // {
-    //     if(other.CompareTag("InteractableZone"))
-    //     {
-    //         canPressInteract = true;
-    //         
-            
-    //     }
-    // }
+    public ZoneType getZoneType()
+    {
+        return zoneType;
+    }
+    void OnDestroy()
+    {
+        if(playerController != null)
+        {
+            playerController.removeInteractableZone();
+        }
+    }
 }
