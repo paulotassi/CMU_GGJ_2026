@@ -13,12 +13,23 @@ public class GasMask : Interactable
     {
         
     }
-    public override void Interact(GameObject other = null)
+    public override bool Interact(GameObject other)
     {
-        Debug.Log("Picked up Gas Mask");
+        
         // Add gas mask to player's inventory logic here
-
+        if(!other.GetComponent<PlayerController>().addMask())
+        {
+            Debug.Log("Cannot pick up more gas masks");
+            //EventManatger.FailedGasMask();
+            return false;
+        }
+        else
+        {
+            //EventManager.PickedUpGasMask();
+            Destroy(transform.parent.gameObject);
+            return true;
+        }
         // Destroy gas mask object after pickup
-        Destroy(gameObject);
+
     }
 }

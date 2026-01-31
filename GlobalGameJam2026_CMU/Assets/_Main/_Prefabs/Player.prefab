@@ -185,9 +185,9 @@ GameObject:
   - component: {fileID: 6919044974554458145}
   - component: {fileID: 5040596175957262959}
   - component: {fileID: 5150853292870577449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,5 +359,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 5
   sprintSpeed: 2
+  interactDistance: 3
   mouseSensitivity: 0.1
   controllerSensitivity: 100
+  maxHeldMasks: 1000
+  currMaskAmount: 1
+  totalKeys: 0
+  maxHeldKeys: 3
+  startingPlayerHealth: 100
+  startingGasMaskHealth: 100
