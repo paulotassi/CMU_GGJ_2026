@@ -411,6 +411,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647287228}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &654968822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7942141788650746610, guid: a2304107e6c96cd4989f442c61407aea, type: 3}
+  m_PrefabInstance: {fileID: 209275192481085386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &654968830
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654968822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &761208131
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +967,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7942141788650746610, guid: a2304107e6c96cd4989f442c61407aea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 654968830}
   m_SourcePrefab: {fileID: 100100000, guid: a2304107e6c96cd4989f442c61407aea, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
