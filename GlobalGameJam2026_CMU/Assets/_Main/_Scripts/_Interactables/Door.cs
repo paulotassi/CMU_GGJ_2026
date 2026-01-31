@@ -6,7 +6,8 @@ public class Door : Interactable
     {
         HasGauge,
         HasWindow,
-        HasNone
+        HasNone,
+        HasKeyPad
     }
     
     
