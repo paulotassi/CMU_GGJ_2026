@@ -298,6 +298,7 @@ public class PlayerController : MonoBehaviour
     private void playerDied()
     {
         //EventManager.PlayerDied();
+        
     }
 
     // Handles gas mask destruction
