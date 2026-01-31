@@ -23,10 +23,6 @@ public class InteractableZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerInZone)
-        {
-            
-        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -47,4 +43,25 @@ public class InteractableZone : MonoBehaviour
             interactable.setGrabbable(false);
         }
     }
+
+    void interactPressed()
+    {
+        if(isPlayerInZone && interactable.isGrabbable())
+        {   
+            //interactable.Interact(gameObject);
+
+        }
+    }
+
+    ///In player:
+    /// 
+    /// void OnTriggerEnter(Collider other)
+    // {
+    //     if(other.CompareTag("InteractableZone"))
+    //     {
+    //         canPressInteract = true;
+    //         
+            
+    //     }
+    // }
 }
