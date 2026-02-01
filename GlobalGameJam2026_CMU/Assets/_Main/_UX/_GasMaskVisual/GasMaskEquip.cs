@@ -13,7 +13,7 @@ public class GasMaskEquip : MonoBehaviour
     public AudioClip equipMaskSound;
     public AudioClip unequipMaskSound;
 
-    private IEnumerator Start()
+    /*private IEnumerator Start()
     {
         if (animator == null)
         {
@@ -31,7 +31,8 @@ public class GasMaskEquip : MonoBehaviour
         }
 
         // === just for testing ===
-    }
+    }*/
+    
     
 
     /// <summary>

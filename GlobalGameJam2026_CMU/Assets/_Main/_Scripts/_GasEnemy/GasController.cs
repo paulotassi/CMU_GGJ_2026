@@ -10,14 +10,6 @@ public class GasController : MonoBehaviour
 
     private SphereCollider gasTrigger; // assign the trigger collider here
 
-
-    private void Start()
-    {
-        gasTrigger = GetComponent<SphereCollider>();
-        setGasDensity(gasStrength);
-        setGasSize(gasStrength);
-    }
-
     public void setGasDensity(float gasStrength)
     {
         if (gasParticle == null) return;
