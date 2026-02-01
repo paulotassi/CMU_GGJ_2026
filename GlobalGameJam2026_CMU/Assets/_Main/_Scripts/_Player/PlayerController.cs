@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     public GasMaskEquip gmEquipAnim;
 
     public bool maskEquipped { get; private set; }         // Whether the gas mask is currently equipped
-
+    public AudioSource breathingSound;
 
     [SerializeField] private float gasDamageIntervalSeconds = 1.0f;    // Damage Interval
 
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
         {
             maskEquipped = false;                 // Unequip
             gmEquipAnim.UnequipMask();            // Play unequip anim
-
+            if (breathingSound.isPlaying) breathingSound.Stop();
             EventManager.CurrentMaskHealth(gasMaskHealth);
             return;
         }
@@ -213,6 +213,7 @@ public class PlayerController : MonoBehaviour
 
         maskEquipped = true;                      // Equip
         gmEquipAnim.EquipMask();                  // Play equip anim
+        breathingSound.Play();
 
         EventManager.CurrentMaskHealth(gasMaskHealth);
     }
