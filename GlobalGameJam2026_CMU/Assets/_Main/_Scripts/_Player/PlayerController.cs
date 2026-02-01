@@ -582,7 +582,6 @@ public class PlayerController : MonoBehaviour
             currMaskAmount--; 
         }
 
-        
     }
 
     #endregion

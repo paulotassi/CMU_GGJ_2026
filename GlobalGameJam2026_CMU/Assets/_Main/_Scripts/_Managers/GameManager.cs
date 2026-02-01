@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
         EventManager.playerDeath -= endGame;
     }
 
+    private void winGame()
+    {
+        Debug.Log("Game will Reset");
+        StartCoroutine(gameEndCoroutine(3));
+    }
     private void endGame(float deathEventDuration)
     {
         Debug.Log("Game will Reset");
