@@ -22,5 +22,6 @@ public class GasMaskFog : MonoBehaviour
     public void SetBreathingSpeed(float newBreathingSpeed)
     {
         glassRenderer.material.SetFloat("_BreathingSpeed", newBreathingSpeed);
+        //SET BREATHING AUDIO
     }
 }
