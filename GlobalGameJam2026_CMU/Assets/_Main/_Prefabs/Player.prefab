@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 24511504772326172}
   - component: {fileID: 5040596175957262959}
   - component: {fileID: 5150853292870577449}
-  - component: {fileID: 1979655394936494767}
+  - component: {fileID: 6558742221683286220}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -676,11 +676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc81d88386b64634f8f083d3184918ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
+  moveSpeed: 3
   sprintSpeed: 2
   interactDistance: 3
   mouseSensitivity: 0.1
-  controllerSensitivity: 100
+  controllerSensitivity: 200
   interactMask:
     serializedVersion: 2
     m_Bits: 128
@@ -692,7 +692,7 @@ MonoBehaviour:
   startingGasMaskHealth: 100
   gmEquipAnim: {fileID: 6250853220146756184}
   gasDamageIntervalSeconds: 1
---- !u!143 &1979655394936494767
+--- !u!143 &6558742221683286220
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -710,13 +710,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 3.02
-  m_Radius: 0.62
+  m_Height: 1.75
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0.42}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8601544322125566019
 GameObject:
   m_ObjectHideFlags: 0
