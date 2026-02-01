@@ -486,6 +486,8 @@ MonoBehaviour:
   maxHeldKeys: 3
   startingPlayerHealth: 100
   startingGasMaskHealth: 100
+  gasDamagePerTick: 1
+  gasDamageIntervalSeconds: 1
 --- !u!143 &1979655394936494767
 CharacterController:
   m_ObjectHideFlags: 0
@@ -519,10 +521,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5122418914035915762}
     m_Modifications:
-    - target: {fileID: 2235721266080535391, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
-      propertyPath: m_Name
-      value: Gas Mask Visual
-      objectReference: {fileID: 0}
     - target: {fileID: 2665103254984095049, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
       propertyPath: m_Name
       value: Gas Mask Visual Prefab

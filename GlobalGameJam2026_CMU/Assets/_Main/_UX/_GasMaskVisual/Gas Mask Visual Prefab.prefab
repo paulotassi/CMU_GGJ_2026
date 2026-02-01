@@ -562,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: m_Name
-      value: Gas Mask FBX
+      value: Gas Mask Visual
       objectReference: {fileID: 0}
     - target: {fileID: 8970791462200108922, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
