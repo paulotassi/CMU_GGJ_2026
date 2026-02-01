@@ -16,7 +16,7 @@ public class BloodSplatterScale : MonoBehaviour
     {
         if (!player)
         {
-            player = FindObjectOfType<PlayerController>();
+            player = FindFirstObjectByType<PlayerController>();
         }
     }
 
