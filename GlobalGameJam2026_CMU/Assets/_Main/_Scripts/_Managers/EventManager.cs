@@ -19,7 +19,10 @@ public static class EventManager
     // Fired whenever gas mask health changes (send the new current mask health)
     public static event Action<int> currentMaskHealth;
 
-    
+    // TextEvents
+    public static event Action<string> TriggerText;
+
+
 
     #region Invoke Helpers
 
@@ -33,6 +36,11 @@ public static class EventManager
     public static void GameWin()
     {
         gameWin?.Invoke();
+    }
+
+    public static void TextTrigger(string intendedText)
+    {
+        TriggerText?.Invoke(intendedText);
     }
 
     // Call this when the player dies
