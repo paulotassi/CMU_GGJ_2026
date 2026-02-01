@@ -51,7 +51,7 @@ public class GasController : MonoBehaviour
         PlayerController player = other.GetComponent<PlayerController>();
         if (player == null) return;
         Debug.Log("Player entered a Gas Zone");
-        player.enterGasZone();
+        player.enterGasZone(gasDamageValue);
     }
 
     private void OnTriggerExit(Collider other)

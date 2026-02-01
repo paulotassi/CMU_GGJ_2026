@@ -456,13 +456,13 @@ public class PlayerController : MonoBehaviour
 
     #region Gas Damage Toggle
 
-    public void enterGasZone()
+    public void enterGasZone(int gasDamage)
     {
         gasZoneCount++;
 
         if (gasDamageCoroutine == null)
         {
-            gasDamageCoroutine = StartCoroutine(gasDamageLoop());
+            gasDamageCoroutine = StartCoroutine(gasDamageLoop(gasDamage));
         }
     }
 
@@ -478,7 +478,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator gasDamageLoop()
+    private IEnumerator gasDamageLoop(int gasDamage)
     {
         while (gasZoneCount > 0)
         {
