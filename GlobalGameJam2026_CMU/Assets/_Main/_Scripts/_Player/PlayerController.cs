@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Health / Vitals
+    #region Health / Mask / Gas
     [Header("Health Info")]
     public int startingPlayerHealth = 100;                 // Initial player health
     public int startingGasMaskHealth = 100;                // Initial gas mask durability
@@ -55,6 +55,12 @@ public class PlayerController : MonoBehaviour
     public int gasMaskHealth { get; private set; }         // Current gas mask health
 
     public bool maskEquipped { get; private set; }         // Whether the gas mask is currently equipped
+
+    [SerializeField] private int gasDamagePerTick = 1;                 // Damage applied each tick while in gas
+    [SerializeField] private float gasDamageIntervalSeconds = 1.0f;    // Damage Interval
+
+    private int gasZoneCount = 0;                                      // How many gas triggers we're inside (prevents overlap bugs)
+    private Coroutine gasDamageCoroutine;
 
     #endregion
 
@@ -444,6 +450,44 @@ public class PlayerController : MonoBehaviour
         {
             playerDied();
         }
+    }
+
+    #endregion
+
+    #region Gas Damage Toggle
+
+    public void enterGasZone(int gasDamage)
+    {
+        gasZoneCount++;
+
+        if (gasDamageCoroutine == null)
+        {
+            gasDamageCoroutine = StartCoroutine(gasDamageLoop(gasDamage));
+        }
+    }
+
+    // Called by gas zones on exit
+    public void exitGasZone()
+    {
+        gasZoneCount = Mathf.Max(0, gasZoneCount - 1);
+
+        if (gasZoneCount == 0 && gasDamageCoroutine != null)
+        {
+            StopCoroutine(gasDamageCoroutine);
+            gasDamageCoroutine = null;
+        }
+    }
+
+    private IEnumerator gasDamageLoop(int gasDamage)
+    {
+        while (gasZoneCount > 0)
+        {
+            Debug.Log("Player is about to take Damage");
+            takeDamage(gasDamagePerTick); // Routes through mask/player logic you already have
+            yield return new WaitForSeconds(gasDamageIntervalSeconds);
+        }
+
+        gasDamageCoroutine = null;
     }
 
     #endregion
