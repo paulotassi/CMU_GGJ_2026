@@ -16,6 +16,8 @@ public class Door : Interactable
 
     public Animator doorAnimator;
 
+    public AudioClip doorOpenSound;
+
     public bool opened;
     [Header("For Door with Key")]
     [SerializeField] private bool needsKey;
@@ -68,6 +70,7 @@ public class Door : Interactable
         //Play door open animation
         opened = true;
         doorAnimator.SetTrigger("DoorOpen");
+        SoundManager.sm.PlaySoundEffect(doorOpenSound, transform.position, false, true);
         //Destroy(transform.parent.gameObject);
         return true;
     }
