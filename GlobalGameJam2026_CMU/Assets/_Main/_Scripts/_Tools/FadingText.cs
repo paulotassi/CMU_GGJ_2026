@@ -33,6 +33,7 @@ public class FadingText : MonoBehaviour
     private void DisplayText(string message)
     {
         Debug.Log("FadingText received message: " + message);
+        StopCoroutine("FadeTextRoutine");
         StartCoroutine(FadeTextRoutine(message));
     }
 
