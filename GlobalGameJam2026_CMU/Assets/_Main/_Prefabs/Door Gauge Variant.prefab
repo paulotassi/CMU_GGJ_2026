@@ -48,6 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: -7806518437255141961, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8653562640109403451, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+    - target: {fileID: -6668712465445371039, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 183ebb15da29d48468ee901a2392f262, type: 2}
+    - target: {fileID: -4923581170646326133, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4917130519664990321, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827301039346191785, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: -1826555681091926249, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -56,6 +79,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: GaugeDoor
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 919132149155446097, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949982496384361989, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d04e51b5534f6684cb073345d281d6a1, type: 2}
+    - target: {fileID: 2807145013163533382, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d9583ab974b6e408deb589e66f97ec, type: 2}
+    - target: {fileID: 5011144759867826803, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139329209903284370, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296268043244635156, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43795c4ed27cddc46bb03bccfb406903, type: 2}
+    - target: {fileID: 6683212527568772988, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a6f82721ea7ac9e4a8e9ed32b06d9afa, type: 2}
+    - target: {fileID: 6988931409752143370, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183061665216809199, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -119,7 +181,8 @@ PrefabInstance:
       value: Door Gauge Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4355322974142490751, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6433785481682862007, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       insertIndex: -1
