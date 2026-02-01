@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.22404169, g: 0.27455315, b: 0.40251565, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -127,34 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1933358957}
     m_Modifications:
-    - target: {fileID: 405913160350072703, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5286331
-      objectReference: {fileID: 0}
-    - target: {fileID: 2257415964617861843, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6964952
-      objectReference: {fileID: 0}
-    - target: {fileID: 2257415964617861843, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.0099968
-      objectReference: {fileID: 0}
-    - target: {fileID: 2257415964617861843, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.020003
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550240767632524921, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6964952
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550240767632524921, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.0099968
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550240767632524921, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.020006001
-      objectReference: {fileID: 0}
     - target: {fileID: 3170087882619302173, guid: 6f419958ccadc074090d46397eaab961, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.36
@@ -198,34 +170,6 @@ PrefabInstance:
     - target: {fileID: 3359567063675860036, guid: 6f419958ccadc074090d46397eaab961, type: 3}
       propertyPath: m_Name
       value: GasLocationPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149401255278629845, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5286331
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149401255278629845, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.020003
-      objectReference: {fileID: 0}
-    - target: {fileID: 5558635690069055539, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5286331
-      objectReference: {fileID: 0}
-    - target: {fileID: 5558635690069055539, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.019997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6329204235155688863, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6964952
-      objectReference: {fileID: 0}
-    - target: {fileID: 6329204235155688863, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6329204235155688863, guid: 6f419958ccadc074090d46397eaab961, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
