@@ -1,40 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GasMaskFilterLight : MonoBehaviour
 {
-    [SerializeField] private GameObject greenLight;
-    [SerializeField] private GameObject yellowLight;
-    [SerializeField] private GameObject rightLight;
+    [SerializeField] private GameObject greenLight;   // Active when mask health > 66
+    [SerializeField] private GameObject yellowLight;  // Active when mask health is 33–65
+    [SerializeField] private GameObject rightLight;   // Red light (naming kept as-is)
 
-    
-    
-    
-    /// <summary>
-    /// just for testing
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator Start()
+    #region Unity Lifecycle
+
+    void OnEnable()
     {
-        Debug.LogWarning("There is test code running for GasMaskFilterLight, delete this for final build");
-        while (true)
+        // Subscribe to mask health updates
+        EventManager.currentMaskHealth += OnMaskHealthChanged;
+    }
+
+    void OnDisable()
+    {
+        // Always unsubscribe to avoid memory leaks / null refs
+        EventManager.currentMaskHealth -= OnMaskHealthChanged;
+    }
+
+    #endregion
+
+    #region Event Callbacks
+
+    /// <summary>
+    /// Called whenever the gas mask health changes.
+    /// Converts health value into a light color state.
+    /// </summary>
+    /// <param name="currentHealth">Current gas mask health value</param>
+    private void OnMaskHealthChanged(int currentHealth)
+    {
+        if (currentHealth > 66)
         {
             SetFilterLightColor(LightColor.Green);
-            yield return new WaitForSeconds(1f);
-            SetFilterLightColor(LightColor.Yellow);
-            yield return new WaitForSeconds(1f);
-            SetFilterLightColor(LightColor.Red);
-            yield return new WaitForSeconds(1f);
-            
         }
-
+        else if (currentHealth >= 33)
+        {
+            SetFilterLightColor(LightColor.Yellow);
+        }
+        else
+        {
+            SetFilterLightColor(LightColor.Red);
+        }
     }
-    
+
+    #endregion
+
+    #region Light Control
+
     /// <summary>
-    /// Set which light on the filter to be on. Use enum LightColor either green, yellow, red, none, or all
+    /// Enables exactly one (or multiple) filter lights based on the selected color.
     /// </summary>
-    /// <param name="color"></param>
+    /// <param name="color">Desired filter light color</param>
     public void SetFilterLightColor(LightColor color)
     {
         switch (color)
@@ -44,21 +63,25 @@ public class GasMaskFilterLight : MonoBehaviour
                 yellowLight.SetActive(false);
                 rightLight.SetActive(false);
                 break;
+
             case LightColor.Yellow:
                 greenLight.SetActive(false);
                 yellowLight.SetActive(true);
                 rightLight.SetActive(false);
                 break;
+
             case LightColor.Red:
                 greenLight.SetActive(false);
                 yellowLight.SetActive(false);
                 rightLight.SetActive(true);
                 break;
+
             case LightColor.None:
                 greenLight.SetActive(false);
                 yellowLight.SetActive(false);
                 rightLight.SetActive(false);
                 break;
+
             case LightColor.All:
                 greenLight.SetActive(true);
                 yellowLight.SetActive(true);
@@ -66,6 +89,8 @@ public class GasMaskFilterLight : MonoBehaviour
                 break;
         }
     }
+
+    #endregion
 }
 
 public enum LightColor

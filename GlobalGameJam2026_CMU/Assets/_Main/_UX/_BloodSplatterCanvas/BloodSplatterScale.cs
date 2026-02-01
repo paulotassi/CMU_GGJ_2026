@@ -7,7 +7,7 @@ public class BloodSplatterScale : MonoBehaviour
 
     private float maxScale = 4.5f;
     
-    private float minScale = 0f;
+    private float minScale = 2f;
     
     [SerializeField] private PlayerController player;
     
