@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.playerDeath += endGame;
+        EventManager.gameWin += winGame;
     }
 
     private void OnDisable()
     {
         EventManager.playerDeath -= endGame;
+        EventManager.gameWin -= winGame;
     }
 
     private void winGame()
@@ -29,8 +32,16 @@ public class GameManager : MonoBehaviour
     private IEnumerator gameEndCoroutine(float deathEventDuration)
     {
         yield return new WaitForSeconds(deathEventDuration);
-        //Load Game Start Scene
         
+        
+    }
+
+    private IEnumerator gameWinCoroutine()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene("Win_Credits");
+
+
     }
 
 }
