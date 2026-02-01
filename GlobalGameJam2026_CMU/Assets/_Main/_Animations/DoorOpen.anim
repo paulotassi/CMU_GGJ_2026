@@ -1264,7 +1264,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: GaugeDoor/DoorGauge
+    path: WindowDoor/DoorWindow/MiddleRoom.008
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1276,7 +1276,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: GaugeDoor/DoorGauge
+    path: WindowDoor/DoorWindow/MiddleRoom.008
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1288,7 +1288,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: GaugeDoor/DoorGauge
+    path: WindowDoor/DoorWindow/MiddleRoom.008
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1444,7 +1444,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: WindowDoor/DoorWindow/MiddleRoom.008
+    path: GaugeDoor/DoorGauge
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1456,7 +1456,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: WindowDoor/DoorWindow/MiddleRoom.008
+    path: GaugeDoor/DoorGauge
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1468,7 +1468,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: WindowDoor/DoorWindow/MiddleRoom.008
+    path: GaugeDoor/DoorGauge
     classID: 4
     script: {fileID: 0}
     flags: 0
