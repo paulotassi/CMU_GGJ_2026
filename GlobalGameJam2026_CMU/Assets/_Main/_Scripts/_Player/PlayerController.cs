@@ -553,6 +553,8 @@ public class PlayerController : MonoBehaviour
         if(currMaskAmount > 0)
         {
             currMaskAmount--; 
+            gasMaskHealth = startingGasMaskHealth;
+            EventManager.CurrentMaskHealth(gasMaskHealth);
         }
 
     }
