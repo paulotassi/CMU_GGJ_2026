@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void winGame()
     {
         Debug.Log("Game will Reset");
-        StartCoroutine(gameEndCoroutine(3));
+        StartCoroutine(gameWinCoroutine());
     }
     private void endGame(float deathEventDuration)
     {
