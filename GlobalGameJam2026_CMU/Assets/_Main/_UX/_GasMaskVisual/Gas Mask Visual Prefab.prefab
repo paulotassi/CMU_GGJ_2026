@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c51c8c87a2b49b4b8549f00942ed968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  glassRenderer: {fileID: 0}
+  glassRenderer: {fileID: 8050516638614817140}
 --- !u!95 &9099589178737239212
 Animator:
   serializedVersion: 7
@@ -562,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: m_Name
-      value: Gas Mask FBX
+      value: Gas Mask Visual
       objectReference: {fileID: 0}
     - target: {fileID: 8970791462200108922, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -585,5 +585,10 @@ PrefabInstance:
 --- !u!4 &1462878273258392037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
+  m_PrefabInstance: {fileID: 1425258940769857038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8050516638614817140 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8970791462200108922, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
   m_PrefabInstance: {fileID: 1425258940769857038}
   m_PrefabAsset: {fileID: 0}
