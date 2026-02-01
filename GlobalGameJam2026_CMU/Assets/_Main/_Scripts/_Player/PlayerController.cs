@@ -505,7 +505,7 @@ public class PlayerController : MonoBehaviour
 
     private void playerDied()
     {
-
+        EventManager.PlayerDeath();
     }
 
     private void maskBroke()
