@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public float interactDistance = 3f;                    // Raycast distance for interactions
 
     public float mouseSensitivity = 0.1f;                  // Mouse look sensitivity (raw delta)
-    public float controllerSensitivity = 120f;             // Controller look sensitivity (scaled)
+    public float controllerSensitivity = 175f;             // Controller look sensitivity (scaled)
     private float verticalVelocity;
     [SerializeField] private LayerMask interactMask;
 

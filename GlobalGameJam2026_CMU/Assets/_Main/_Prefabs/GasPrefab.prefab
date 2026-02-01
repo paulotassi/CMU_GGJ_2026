@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GasController
   gasStrength: 1
   gasChangeRate: 0
-  gasDamageValue: 4
+  gasDamageValue: 5
   gasParticle: {fileID: 547015227250674052}
 --- !u!136 &728979955834401301
 CapsuleCollider:
