@@ -224,8 +224,8 @@ MonoBehaviour:
   - name: Walking
     clip: {fileID: 8300000, guid: 72eb47f1f59d9467db19612fac77036a, type: 3}
     volume: 1
-  musicSource: {fileID: 0}
-  sfxSource: {fileID: 0}
+  musicSource: {fileID: 942359937373396606}
+  sfxSource: {fileID: 6127852150400662422}
   otherSource: {fileID: 0}
 --- !u!1 &5081917202352707786
 GameObject:
