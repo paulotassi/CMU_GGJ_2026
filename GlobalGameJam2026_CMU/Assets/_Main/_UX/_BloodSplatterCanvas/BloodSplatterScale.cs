@@ -31,7 +31,10 @@ public class BloodSplatterScale : MonoBehaviour
     /// </summary>
     private void ScaleBloodSplatterToPlayerHealth()
     {
-        float lerp = Mathf.Lerp(minScale, maxScale, player.playerHealth / player.startingPlayerHealth);
+        
+        float lerp = Mathf.Lerp(minScale, maxScale, (float)player.playerHealth / (float)player.startingPlayerHealth);
+        Debug.Log($"{minScale}, {maxScale}, {player.playerHealth}, {player.startingPlayerHealth}, {(float)player.playerHealth / (float)player.startingPlayerHealth}, {lerp}");
+
         bloodSplatterImage.localScale = new Vector3(lerp, lerp, lerp);
         
     }

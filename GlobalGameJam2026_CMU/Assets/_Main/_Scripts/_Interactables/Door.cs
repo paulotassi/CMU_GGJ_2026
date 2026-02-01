@@ -54,7 +54,7 @@ public class Door : Interactable
             //Locked; doesn't have key
             //Broadcast door failed open
             //EventManager.FailedOpenDoor
-            
+            EventManager.TextTrigger("It needs a key.");
             return false;
         }
         if(doorType == DoorType.HasKeyPad && !keypadUnlocked)

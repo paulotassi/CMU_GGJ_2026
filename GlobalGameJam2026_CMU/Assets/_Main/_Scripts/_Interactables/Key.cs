@@ -20,7 +20,7 @@ public class Key : Interactable
     {
         Debug.Log("Picked up key: " + keyID);
         // Add key to player's inventory logic here
-        
+        EventManager.TextTrigger("A key.");
         other.GetComponent<PlayerController>().AddKeyToInventory(keyID);
         // Destroy key object after pickup
         Destroy(transform.parent.gameObject);

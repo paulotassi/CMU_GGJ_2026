@@ -98,9 +98,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1446589084677755504, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6964952
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446589084677755504, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0099968
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446589084677755504, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.020003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892688308986445530, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6964952
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892688308986445530, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0099968
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892688308986445530, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.020006001
+      objectReference: {fileID: 0}
     - target: {fileID: 5155584939446397353, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
       propertyPath: m_Name
       value: GasPrefab (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671374145497953596, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6964952
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671374145497953596, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671374145497953596, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -172,9 +208,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1446589084677755504, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5286331
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892688308986445530, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5286331
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892688308986445530, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.020003
+      objectReference: {fileID: 0}
     - target: {fileID: 5155584939446397353, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
       propertyPath: m_Name
       value: GasPrefab (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671374145497953596, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5286331
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671374145497953596, guid: 35c09721fb753054a821165c7a6ad442, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.019997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

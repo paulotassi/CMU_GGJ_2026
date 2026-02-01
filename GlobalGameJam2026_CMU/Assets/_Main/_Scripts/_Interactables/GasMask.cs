@@ -20,6 +20,7 @@ public class GasMask : Interactable
         if(!other.GetComponent<PlayerController>().addMask())
         {
             Debug.Log("Cannot pick up more gas masks");
+            EventManager.TextTrigger("I'm carrying too many masks.");
             //EventManatger.FailedGasMask();
             return false;
         }
