@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     public bool maskEquipped { get; private set; }         // Whether the gas mask is currently equipped
 
-    [SerializeField] private int gasDamagePerTick = 1;                 // Damage applied each tick while in gas
+
     [SerializeField] private float gasDamageIntervalSeconds = 1.0f;    // Damage Interval
 
     private int gasZoneCount = 0;                                      // How many gas triggers we're inside (prevents overlap bugs)
@@ -336,6 +336,15 @@ public class PlayerController : MonoBehaviour
 
     #region Movement
 
+    public Vector2 getMoveInput()
+    {
+        return moveInput;
+    }
+
+    public float getSprintInput()
+    {
+        return sprintInput;
+    }
     // Moves the player relative to their facing direction
     void HandleMove()
     {
@@ -483,7 +492,7 @@ public class PlayerController : MonoBehaviour
         while (gasZoneCount > 0)
         {
             Debug.Log("Player is about to take Damage");
-            takeDamage(gasDamagePerTick); // Routes through mask/player logic you already have
+            takeDamage(gasDamage); // Routes through mask/player logic you already have
             yield return new WaitForSeconds(gasDamageIntervalSeconds);
         }
 
@@ -496,6 +505,7 @@ public class PlayerController : MonoBehaviour
 
     private void playerDied()
     {
+
     }
 
     private void maskBroke()
