@@ -296,9 +296,13 @@ public class PlayerController : MonoBehaviour
                 keypadButton.PressButton();
                 //return;
             }
+            if(hit.collider.CompareTag("Door"))
+            {
+                EventManager.TextTrigger("It can't be opened from this side.");
+                //return;
+            }
             if(hit.collider.TryGetComponent(out InteractableZone interactableZone))
             {
-                
                 if (!interactableZone.interactPressed(gameObject))
                 {
                     //
