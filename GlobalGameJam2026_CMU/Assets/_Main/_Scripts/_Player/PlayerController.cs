@@ -140,6 +140,12 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(MaskAnimation());
             
         }
+
+        //Test Input logic remove before finalization
+        if (playerInput.Player.Next.ReadValue<float>() > 0)
+        {
+            testInput();
+        }
     }
 
     #endregion
@@ -505,7 +511,7 @@ public class PlayerController : MonoBehaviour
 
     private void playerDied()
     {
-        EventManager.PlayerDeath();
+        EventManager.PlayerDeath(5);
     }
 
     private void maskBroke()
@@ -528,7 +534,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Gizmos
+    #region DebugTools
 
     void OnDrawGizmos()
     {
@@ -545,6 +551,11 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(
             ray.origin,
             ray.origin + ray.direction * interactDistance);
+    }
+
+    private void testInput()
+    {
+        playerDied();
     }
 
     #endregion

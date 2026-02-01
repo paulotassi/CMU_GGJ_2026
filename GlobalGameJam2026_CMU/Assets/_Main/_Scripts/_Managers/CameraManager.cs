@@ -2,6 +2,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraManager : MonoBehaviour
 {
@@ -44,8 +45,8 @@ public class CameraManager : MonoBehaviour
     #region Fade To Black (On Death)
 
     [Header("Fade To Black")]
-    [SerializeField] private CanvasGroup fadeCanvasGroup;                // UI overlay that we fade (alpha 0->1)
-    [SerializeField] private float fadeToBlackSeconds = 1.0f;            // How long the fade takes
+    [SerializeField] private UnityEngine.UI.Image fadeImage;   // Fullscreen black image
+    [SerializeField] private AnimationCurve fadeCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f); // tweak in inspector
 
     private Coroutine fadeCoroutine;
 
@@ -75,12 +76,7 @@ public class CameraManager : MonoBehaviour
             playerController = GetComponentInParent<PlayerController>(); // Common setup: camera is child of player
         }
 
-        if (fadeCanvasGroup != null)
-        {
-            fadeCanvasGroup.alpha = 0f;
-            fadeCanvasGroup.blocksRaycasts = false;
-            fadeCanvasGroup.interactable = false;
-        }
+
     }
 
     private void OnEnable()
@@ -194,40 +190,50 @@ public class CameraManager : MonoBehaviour
 
     #region Death Fade
 
-    private void OnPlayerDeath()
+    private void OnPlayerDeath(float deathEventDuration)
     {
-        if (fadeCanvasGroup == null)
-        {
-            Debug.LogWarning("CameraManager: fadeCanvasGroup not assigned.");
-            return;
-        }
-
+        
         if (fadeCoroutine != null)
         {
             StopCoroutine(fadeCoroutine);
         }
 
-        fadeCoroutine = StartCoroutine(fadeToBlack());
+        fadeCoroutine = StartCoroutine(fadeToBlack(deathEventDuration));
     }
 
-    private IEnumerator fadeToBlack()
+    private IEnumerator fadeToBlack(float deathEventDuration)
     {
+        if (fadeImage == null)
+        {
+            yield break;
+        }
+
         float timer = 0f;
-        float startAlpha = fadeCanvasGroup.alpha;
 
-        fadeCanvasGroup.blocksRaycasts = true;
+        Color color = fadeImage.color;  // keep RGB as-is (your image is already black)
+        float startAlpha = color.a;
 
-        while (timer < fadeToBlackSeconds)
+        while (timer < deathEventDuration * 0.8f)
         {
             timer += Time.deltaTime;
-            float t = Mathf.Clamp01(timer / fadeToBlackSeconds);
-            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, 1f, t);
+
+            float t = Mathf.Clamp01(timer / (deathEventDuration * 0.8f));
+            float curvedT = fadeCurve.Evaluate(t); // non-linear time
+
+            color.a = Mathf.Lerp(startAlpha, 1f, curvedT);
+            fadeImage.color = color;
+
             yield return null;
         }
 
-        fadeCanvasGroup.alpha = 1f;
+        color.a = 1f;
+        fadeImage.color = color;
+
         fadeCoroutine = null;
     }
+
+
+
 
     #endregion
 }
