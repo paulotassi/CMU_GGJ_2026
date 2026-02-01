@@ -555,7 +555,7 @@ public class PlayerController : MonoBehaviour
 
     private void testInput()
     {
-        playerDied();
+        ApplyDamageToPlayer(25);
     }
 
     #endregion
