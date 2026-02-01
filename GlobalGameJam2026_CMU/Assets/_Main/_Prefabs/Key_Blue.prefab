@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6225594883347754291}
   - component: {fileID: 2978325819713491629}
   - component: {fileID: 7310557392898850719}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: InteractableZone
-  m_TagString: InteractableZone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604101069792655819}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Key_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
