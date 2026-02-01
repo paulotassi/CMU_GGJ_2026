@@ -23,6 +23,10 @@ public class TitleMenu : MonoBehaviour
 
     private void Start()
     {
+        if (sceneToLoad == "")
+        {
+            Debug.LogError($"Empty string name of Scene to be loaded in TitleMenu.cs on {gameObject.name}");
+        }
         // Make sure a button is selected at start for controller/keyboard navigation
         if (mainMenuFirstButton != null)
         {
