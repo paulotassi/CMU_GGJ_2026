@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1320358052543014795
+--- !u!114 &-3410691853860752823
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BigRoom
+  m_Name: WM_Hall15
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,11 +41,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 09de0eedf3cfbe5419cd10cfb56a68a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d0b2638bc66a840a0ac5803d12ca1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 35130bea226717642832ba54ec4b1d24, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ba938c0f76dc5340872bb6150469bc9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -65,11 +65,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 09de0eedf3cfbe5419cd10cfb56a68a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d0b2638bc66a840a0ac5803d12ca1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 20260041ae05ab347ac5cf7bfbb5f1d2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 042e534834b68e242a66fd65b211e193, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
