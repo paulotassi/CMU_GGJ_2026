@@ -374,8 +374,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8b3bcd1833a406f478e125db01fc0b6d, type: 2}
+  m_sharedMaterial: {fileID: 5608202080528317625, guid: 8b3bcd1833a406f478e125db01fc0b6d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -844,6 +844,8 @@ MonoBehaviour:
   maxHeldKeys: 3
   startingPlayerHealth: 100
   startingGasMaskHealth: 100
+  playerAlive: 1
+  deathSound: {fileID: 0}
   gmEquipAnim: {fileID: 6250853220146756184}
   gasDamageIntervalSeconds: 1
 --- !u!143 &6558742221683286220

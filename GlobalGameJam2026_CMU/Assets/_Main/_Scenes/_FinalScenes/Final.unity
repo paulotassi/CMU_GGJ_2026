@@ -282,6 +282,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 989872664}
     m_Modifications:
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_TagString
+      value: InteractableZone
+      objectReference: {fileID: 0}
     - target: {fileID: 6609360195232158247, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.44022
@@ -714,6 +722,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.83
       objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_TagString
+      value: InteractableZone
+      objectReference: {fileID: 0}
     - target: {fileID: 6609360195232158247, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.347172
@@ -927,6 +943,14 @@ PrefabInstance:
     - target: {fileID: 614046745919265667, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_TagString
+      value: InteractableZone
       objectReference: {fileID: 0}
     - target: {fileID: 6609360195232158247, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2220,6 +2244,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.301
       objectReference: {fileID: 0}
+    - target: {fileID: 2969016888071152103, guid: ef4399e957219994fbd06f6c3fef8823, type: 3}
+      propertyPath: onAccessGranted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: WinLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3317,6 +3345,14 @@ PrefabInstance:
     - target: {fileID: 4566700462260468289, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
       propertyPath: m_LocalScale.z
       value: 2.281643
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878518380135926733, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
+      propertyPath: m_TagString
+      value: InteractableZone
       objectReference: {fileID: 0}
     - target: {fileID: 6609360195232158247, guid: 707c54a437d39ad4a9dc27911c18a696, type: 3}
       propertyPath: m_LocalPosition.x
