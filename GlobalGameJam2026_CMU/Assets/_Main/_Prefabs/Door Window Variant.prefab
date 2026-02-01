@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: doorAnimator
       value: 
       objectReference: {fileID: 4420297363529137724}
+    - target: {fileID: 27889858826278024, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 97644c90bcfa746dda41914cb344670b, type: 3}
     - target: {fileID: 6124275084816063973, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       propertyPath: m_Layer
       value: 7
