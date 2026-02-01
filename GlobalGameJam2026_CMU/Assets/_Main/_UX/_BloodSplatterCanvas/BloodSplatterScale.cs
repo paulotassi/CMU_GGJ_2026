@@ -10,7 +10,16 @@ public class BloodSplatterScale : MonoBehaviour
     private float minScale = 2f;
     
     [SerializeField] private PlayerController player;
-    
+
+
+    private void Start()
+    {
+        if (!player)
+        {
+            player = FindFirstObjectByType<PlayerController>();
+        }
+    }
+
     private void Update()
     {
         ScaleBloodSplatterToPlayerHealth();
