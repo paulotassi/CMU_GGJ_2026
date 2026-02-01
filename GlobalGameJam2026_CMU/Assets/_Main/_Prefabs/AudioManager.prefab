@@ -224,6 +224,9 @@ MonoBehaviour:
   - name: Walking
     clip: {fileID: 8300000, guid: 72eb47f1f59d9467db19612fac77036a, type: 3}
     volume: 1
+  - name: Breathing
+    clip: {fileID: 8300000, guid: 2724d828280b94a33aec4e5cfd0a781c, type: 3}
+    volume: 1
   musicSource: {fileID: 942359937373396606}
   sfxSource: {fileID: 6127852150400662422}
   otherSource: {fileID: 0}

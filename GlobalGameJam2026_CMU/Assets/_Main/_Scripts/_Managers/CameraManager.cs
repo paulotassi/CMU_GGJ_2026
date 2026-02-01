@@ -82,11 +82,13 @@ public class CameraManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.playerDeath += OnPlayerDeath;
+        EventManager.gameWin += OnPlayerWin;
     }
 
     private void OnDisable()
     {
         EventManager.playerDeath -= OnPlayerDeath;
+        EventManager.gameWin -= OnPlayerWin;
     }
 
     private void Update()
@@ -232,8 +234,19 @@ public class CameraManager : MonoBehaviour
         fadeCoroutine = null;
     }
 
+    #endregion
 
+    #region Win
+    private void OnPlayerWin()
+    {
 
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+
+        fadeCoroutine = StartCoroutine(fadeToBlack(3));
+    }
 
     #endregion
 }

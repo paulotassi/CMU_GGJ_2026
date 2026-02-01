@@ -53,7 +53,11 @@ public class PlayerController : MonoBehaviour
     public int startingGasMaskHealth = 100;                // Initial gas mask durability
 
     public int playerHealth { get; private set; }          // Current player health
+
+    public bool playerAlive = true;
     public int gasMaskHealth { get; private set; }         // Current gas mask health
+
+    [SerializeField] private AudioClip deathSound;         // Death Sound
 
     public GasMaskEquip gmEquipAnim;
 
@@ -141,7 +145,7 @@ public class PlayerController : MonoBehaviour
             ToggleMaskEquip();                             // Equip / unequip mask
             attackPressedThisFrame = false;                // Consume flag
             //Eventually needs cooldown
-            StartCoroutine(MaskAnimation());
+            
             
         }
 
@@ -188,27 +192,31 @@ public class PlayerController : MonoBehaviour
     // Toggles gas mask equip state (cannot equip if broken)
     private void ToggleMaskEquip()
     {
-        if (!maskEquipped && gasMaskHealth <= 0 && currMaskAmount <= 0)            // Prevent equipping broken mask
-        {
-            return;
-        }
-        
-        maskEquipped = !maskEquipped;                       // Toggle state
-        
-        EventManager.CurrentMaskHealth(gasMaskHealth);
-
+        // If it's currently equipped, we are always allowed to UNEQUIP.
         if (maskEquipped)
         {
-            gmEquipAnim.EquipMask();
-        }
-        else if (!maskEquipped) 
-        { 
-            gmEquipAnim.UnequipMask();
-        } 
-        //Add Mask On Off Sound
-        //Change Abmient Sound to be in mask on State or Mask Off state
+            maskEquipped = false;                 // Unequip
+            gmEquipAnim.UnequipMask();            // Play unequip anim
 
-    }    
+            EventManager.CurrentMaskHealth(gasMaskHealth);
+            return;
+        }
+
+        // If it's NOT equipped, only allow EQUIP if player has a mask and it isn't broken.
+        bool hasMaskAvailable = currMaskAmount > 0;
+        bool maskIsUsable = gasMaskHealth > 0;
+
+        if (!hasMaskAvailable || !maskIsUsable)
+        {
+            return;                               // Can't equip
+        }
+
+        maskEquipped = true;                      // Equip
+        gmEquipAnim.EquipMask();                  // Play equip anim
+
+        EventManager.CurrentMaskHealth(gasMaskHealth);
+    }
+
 
     public bool addMask()
     {
@@ -296,9 +304,13 @@ public class PlayerController : MonoBehaviour
                 keypadButton.PressButton();
                 //return;
             }
+            if(hit.collider.CompareTag("Door"))
+            {
+                EventManager.TextTrigger("It can't be opened from this side.");
+                //return;
+            }
             if(hit.collider.TryGetComponent(out InteractableZone interactableZone))
             {
-                
                 if (!interactableZone.interactPressed(gameObject))
                 {
                     //
@@ -490,20 +502,24 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyDamageToPlayer(int damage)
     {
+        
         if (playerHealth > 1)
         {
+            playerAlive = true;
             playerHealth -= damage;
 
             // Add cough sounds here
 
             if (playerHealth < 0)
             {
+                
                 playerHealth = 0;
             }
         }
 
-        if (playerHealth <= 0)
+        if (playerHealth <= 0 && playerAlive)
         {
+            playerAlive=false;
             playerDied();
         }
     }
@@ -552,7 +568,10 @@ public class PlayerController : MonoBehaviour
 
     private void playerDied()
     {
+        SoundManager.sm.PlaySoundEffect(deathSound, transform.position, false, false);
         EventManager.PlayerDeath(5);
+        playerInput.Player.Move.Disable();
+        playerInput.Player.Look.Disable();
     }
 
     private void maskBroke()
@@ -563,7 +582,6 @@ public class PlayerController : MonoBehaviour
             currMaskAmount--; 
         }
 
-        
     }
 
     #endregion
