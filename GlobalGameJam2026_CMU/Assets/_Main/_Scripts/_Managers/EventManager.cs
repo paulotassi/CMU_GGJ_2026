@@ -46,6 +46,7 @@ public static class EventManager
     // Call this when the player dies
     public static void PlayerDeath(float deathEventDuration)
     {
+        Debug.Log("Heard Player Died from the EM");
         playerDeath?.Invoke(deathEventDuration);
     }
 
