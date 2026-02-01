@@ -6,19 +6,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2080151953342808297}
+    m_TransformParent: {fileID: 5127462963117611847}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.05430007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.038790107
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.13308
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1826555681091926249, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e3672a9048a2384c96fc5068ecbc09e, type: 2}
     - target: {fileID: 919132149155446097, guid: d8c296510485abb44b271ab4dbddbceb, type: 3}
       propertyPath: m_Name
       value: GaugeDoor
@@ -112,18 +116,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6838297784974510199, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       propertyPath: m_Name
-      value: Door Variant 1
+      value: Door Gauge Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 197914871416235033, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6433785481682862007, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 371625387960464908}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
---- !u!4 &2080151953342808297 stripped
+--- !u!4 &5127462963117611847 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 197914871416235033, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6433785481682862007, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
   m_PrefabInstance: {fileID: 2189045912697660656}
   m_PrefabAsset: {fileID: 0}

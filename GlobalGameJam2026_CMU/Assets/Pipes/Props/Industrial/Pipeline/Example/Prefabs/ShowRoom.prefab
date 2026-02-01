@@ -224,7 +224,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 159079292947211450}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Voo.ShowRoom.ShowRoom, Assembly-CSharp
         m_MethodName: ButtonClicked
         m_Mode: 3
@@ -459,20 +459,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -593,20 +596,23 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -682,6 +688,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -703,9 +714,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2759514417304847994
 GameObject:
@@ -717,6 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6654945636071541573}
   - component: {fileID: 1529793828843244074}
+  - component: {fileID: 568922107708395393}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -747,15 +761,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2759514417304847994}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 12
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.95
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -799,8 +812,41 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!114 &568922107708395393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759514417304847994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &3357882143492413910
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +936,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -911,9 +962,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4305069057051793972
 GameObject:
@@ -1036,7 +1089,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 159079292947211450}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Voo.ShowRoom.ShowRoom, Assembly-CSharp
         m_MethodName: ButtonClicked
         m_Mode: 3
@@ -1057,7 +1110,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7087833322688646667}
-  - component: {fileID: 159079292947211450}
   m_Layer: 0
   m_Name: ShowRoom
   m_TagString: Untagged
@@ -1088,257 +1140,6 @@ Transform:
   - {fileID: 3235103821000576026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &159079292947211450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5332910207592757237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60a4aa664904b0468c54d70e0e838cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Objects:
-  - Name: Monometr
-    Prefab: {fileID: 113738, guid: 6bc7ed713a0a5ee4cab6a682a68e522d, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 7, y: 7, z: 7}
-  - Name: Bolt White
-    Prefab: {fileID: 169428, guid: 03d752d21d2760b4bba2aae8e4d86aef, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Bolt White
-    Prefab: {fileID: 111644, guid: 6779940b4df95a245a64d8fd2e7d1084, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Bolt White
-    Prefab: {fileID: 180866, guid: 3e2f43b56dd6b4541b58c4322669adde, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Cap White
-    Prefab: {fileID: 184256, guid: 8be98f2109fb83f4493e37a5978de407, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 65.7, y: 240.22565, z: 46}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Cap White
-    Prefab: {fileID: 192194, guid: f5eb1a44b04976f4b9d16ed94f1ef770, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 65.7, y: 240.22565, z: 46}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Cap White
-    Prefab: {fileID: 122336, guid: 1e5d19b20f322dd4d94ddf7d2c5cb19c, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 65.7, y: 240.22565, z: 46}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Cap White
-    Prefab: {fileID: 151426, guid: a0367c36cafcc5b41a54eea440038180, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 65.7, y: 240.22565, z: 46}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 10, y: 10, z: 10}
-  - Name: Pipe 30
-    Prefab: {fileID: 153172, guid: eaaaa98cf534b094bbf9be1044034e0f, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 0, y: 90, z: 0}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe 60
-    Prefab: {fileID: 195810, guid: 70de128623f41f54c9ac0084659cb5bf, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 0, y: 90, z: 0}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe 90
-    Prefab: {fileID: 195652, guid: e23780c872e30e845b73c12af43ec47c, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 0, y: 90, z: 0}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe 90
-    Prefab: {fileID: 142996, guid: fc7bfbeebc906a049911498b21ff0076, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 0, y: 90, z: 0}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe 180
-    Prefab: {fileID: 142802, guid: 68f7194cb41f97a428e1925cfbacba24, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 0, y: 90, z: 0}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe 180
-    Prefab: {fileID: 136522, guid: c77dd6bd49d0d6d479f3c0f508aca84b, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe L25
-    Prefab: {fileID: 106814, guid: d565ef52a10eabd469032897856eb67b, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe L50
-    Prefab: {fileID: 138694, guid: 471a9819acca1d34c98fd8fee901ffcf, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe L100
-    Prefab: {fileID: 110250, guid: eb9e15c13ead60e4892a2b7a2b9bb08b, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe L200
-    Prefab: {fileID: 127318, guid: 0ecb5f922be3e4845ba974a138e30196, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe X
-    Prefab: {fileID: 140702, guid: af7dc80cd5c1dc240acb81e993dcabdc, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe X
-    Prefab: {fileID: 180266, guid: 15d992c9b8c49774a869c8f7ee5fe365, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe T
-    Prefab: {fileID: 156238, guid: 45ccc266a241b6645882700ee1b869f2, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe T
-    Prefab: {fileID: 131030, guid: ef0f1db67903b774c949a79eb41e451c, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe T Valve
-    Prefab: {fileID: 109748, guid: 69b1aac1e46830043af9ef000103e06b, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Support
-    Prefab: {fileID: 117804, guid: 423b901fdacbf884e832a6f313eb59e3, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 0, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Support
-    Prefab: {fileID: 158750, guid: 6ba1055de98696449afd992a05bf062c, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Support
-    Prefab: {fileID: 106274, guid: 6000e173151604d4c8622c4f6ba9a71d, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Support
-    Prefab: {fileID: 183656, guid: 97aab9c1a5948c646a980527f03ebbc4, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Support
-    Prefab: {fileID: 149366, guid: a550d0a0a33596047bb1270cb45ca015, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 240.22565, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Support
-    Prefab: {fileID: 154268, guid: e78efadf38239db4bab5e31fb7bb8e3a, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe T Valve
-    Prefab: {fileID: 197182, guid: bdac3e06f6cef7f498af809a613afc59, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe T Valve
-    Prefab: {fileID: 118908, guid: 9e5a9966b47daae45aaf6bd9bdc48b20, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe T Valve
-    Prefab: {fileID: 125720, guid: 49e1f52d2cf19cb41861db729150ca87, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Pipe Handle
-    Prefab: {fileID: 159890, guid: e55d8953e4cdba343ba4e4d3f2f4e375, type: 3}
-    Speed: 15
-    CanvasPosition: {x: 0, y: 0.37, z: -1.737}
-    Rotation: {x: 347.6953, y: 90, z: 339.56973}
-    Position: {x: 0, y: 0.86, z: -1.76}
-    Scale: {x: 3, y: 3, z: 3}
-  Speed: 1
-  AutoChangeAfter360: 0
-  PreviewIndex: 0
-  RootSpawnObjects: {fileID: 5387959461700987533}
-  PoolRoot: {fileID: 5215004046058088974}
-  CanvasLabel: {fileID: 4978044838366810339}
-  CanvasRoot: {fileID: 1664600726500728653}
 --- !u!1 &5804256499524981335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,20 +1243,23 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -1617,6 +1421,7 @@ GameObject:
   - component: {fileID: 1861753874174989235}
   - component: {fileID: 6474586047366368406}
   - component: {fileID: 7475692012324310217}
+  - component: {fileID: 6581469965415343737}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1698,3 +1503,47 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8642103711813169249}
   m_Enabled: 1
+--- !u!114 &6581469965415343737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8642103711813169249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
