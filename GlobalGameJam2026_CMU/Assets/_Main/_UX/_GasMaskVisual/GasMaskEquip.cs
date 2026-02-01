@@ -30,6 +30,7 @@ public class GasMaskEquip : MonoBehaviour
         // === just for testing ===
     }*/
     
+    
 
     /// <summary>
     /// Triggers the animator to play the equip mask animation then go into GasMaskEquippedIdle
