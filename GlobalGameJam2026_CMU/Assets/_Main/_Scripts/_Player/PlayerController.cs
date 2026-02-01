@@ -578,10 +578,12 @@ public class PlayerController : MonoBehaviour
             ray.origin + ray.direction * interactDistance);
     }
 
+    #if UNITY_EDITOR
     private void testInput()
     {
         ApplyDamageToPlayer(25);
     }
+    #endif
 
     #endregion
 }
