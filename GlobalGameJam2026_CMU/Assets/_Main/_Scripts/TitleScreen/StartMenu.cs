@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -21,6 +22,9 @@ public class TitleMenu : MonoBehaviour
     /// </summary>
     /// 
 
+
+    [SerializeField] private RectTransform arrowImage;
+    
     private void Start()
     {
         if (sceneToLoad == "")
@@ -33,6 +37,19 @@ public class TitleMenu : MonoBehaviour
             StartCoroutine(SelectButtonNextFrame(mainMenuFirstButton));
         }
     }
+
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            RectTransform currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
+            if (currentButton != null)
+            {
+                arrowImage.anchoredPosition = new Vector2(arrowImage.anchoredPosition.x, currentButton.anchoredPosition.y);
+            }
+        }
+    }
+
     public void LoadScene()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
