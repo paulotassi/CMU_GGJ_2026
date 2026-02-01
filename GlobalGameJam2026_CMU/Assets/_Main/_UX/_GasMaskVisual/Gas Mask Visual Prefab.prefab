@@ -563,11 +563,19 @@ PrefabInstance:
     - target: {fileID: -2442840884526029464, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e53e12f7746ab104498b4b59d0e0bf0b, type: 2}
+      objectReference: {fileID: 2100000, guid: fe672d821fae8084dbd57208da407078, type: 2}
+    - target: {fileID: -1153719208027868138, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 078645f6f5e802149b9a967c01fb7df7, type: 2}
     - target: {fileID: -412348948502381066, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a5b840f888b47d344942d1c2136495a9, type: 2}
+      objectReference: {fileID: 2100000, guid: 151669640b1896a4282b7ab3aee57210, type: 2}
+    - target: {fileID: 223132008574043138, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5acf9112fefe3bf4083a0777d1a035da, type: 2}
     - target: {fileID: 919132149155446097, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: m_Name
       value: Gas Mask Visual
@@ -575,11 +583,11 @@ PrefabInstance:
     - target: {fileID: 5538034933570207217, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0c691e9a866581f49993371ef2d5f4e8, type: 2}
+      objectReference: {fileID: 2100000, guid: 7ba8dd5be3f22554c87f9648b5935864, type: 2}
     - target: {fileID: 8970791462200108922, guid: 4a7ec16d07167854183568eb2d3e7466, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f7e76f98e0ecaa1478fd740e7a898652, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 0798d4664f3346142989d0cdaa8dca6c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
