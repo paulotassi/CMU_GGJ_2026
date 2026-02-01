@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator gameEndCoroutine(float deathEventDuration)
     {
         yield return new WaitForSeconds(deathEventDuration);
-        
-        
+        SceneManager.LoadScene("Win_Credits");
+
     }
 
     private IEnumerator gameWinCoroutine()
