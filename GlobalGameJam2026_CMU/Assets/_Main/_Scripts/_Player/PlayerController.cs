@@ -69,6 +69,9 @@ public class PlayerController : MonoBehaviour
     private int gasZoneCount = 0;                                      // How many gas triggers we're inside (prevents overlap bugs)
     private Coroutine gasDamageCoroutine;
 
+    [SerializeField] private GameObject dotReticle;   // UI Image or GameObject
+    private KeypadButton currentKeypadButton;         // What we're aiming at
+
     #endregion
 
     #region Internal State
@@ -149,6 +152,7 @@ public class PlayerController : MonoBehaviour
             
         }
 
+        UpdateInteractRaycast();
         //Test Input logic remove before finalization
         if (playerInput.Player.Next.ReadValue<float>() > 0)
         {
@@ -288,7 +292,13 @@ public class PlayerController : MonoBehaviour
     // Performs a forward raycast from the camera to detect interactable objects
     void HandleInteract()
     {
-        if (playerCamera == null)                           // Safety check
+        if (currentKeypadButton != null)
+        {
+            currentKeypadButton.PressButton();
+            return;
+        }
+
+        if (playerCamera == null)
         {
             return;
         }
@@ -297,88 +307,50 @@ public class PlayerController : MonoBehaviour
             new Vector3(0.5f, 0.5f, 0f));
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactMask))
-        {   
-            Debug.Log($"FIRST HIT: {hit.collider.name}");
-            if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
-            {
-                Debug.Log("Hi");
-                keypadButton.PressButton();
-                //return;
-            }
-            if(hit.collider.CompareTag("Door"))
+        {
+            if (hit.collider.CompareTag("Door"))
             {
                 EventManager.TextTrigger("It can't be opened from this side.");
-                //return;
+                return;
             }
-            if(hit.collider.TryGetComponent(out InteractableZone interactableZone))
+
+            if (hit.collider.TryGetComponent(out InteractableZone interactableZone))
             {
                 if (!interactableZone.interactPressed(gameObject))
                 {
-                    //
                     Debug.Log("Door was locked or too many masks");
                 }
                 else
                 {
-                    //Successful interactions
                     Debug.Log("Successful Interaction");
                 }
-                //currInteractableZone.
             }
-            else
-            {
-                currInteractableZone = null;
-            }
-            //return;
         }
 
-        // // Attempts to retrieve Interactable component from hit object
-        // if (!hit.collider.TryGetComponent(out Interactable interactable))
-        // {
-        //     return;
-        // }
-
-        // if (interactable.isGrabbable())
-        // {
-        //     //Need to add logic where player discovers the type of object and interacts whichever way it needs to be interacted.
-        //     //MAX
-        //     //Yup right here
-        //     //Dw tassi i gotchu
-        //     switch (interactable.getInteractableType())
-        //     {
-        //         case Interactable.InteractableType.Key:
-                    
-        //             break;
-        //         case Interactable.InteractableType.Door:
-        //             //Door failed to open
-        //             if (!interactable.Interact(gameObject))
-        //             {
-        //                 //Do something
-        //             }
-        //             else
-        //             {
-                        
-        //             }
-        //             break;
-        //         case Interactable.InteractableType.GasMask:
-        //             interactable.Interact(gameObject);
-        //             break;
-        //     }
-        //     //Hopefully you see this comment
-        //     Debug.Log("I can grab this item!... well I just tried to");
-        // }
-        
-        // if(currInteractableZone != null)
-        // {
-        //     Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
-            
-        // }
-        // else
-        // {
-        //     Debug.Log("I can grab this item!... well I just tried to");
-        //     return;
-        // }
-
     }
+        private void UpdateInteractRaycast()
+    {
+        currentKeypadButton = null;
+        dotReticle.SetActive(false);
+
+        if (playerCamera == null)
+        {
+            return;
+        }
+
+        Ray ray = playerCamera.ViewportPointToRay(
+            new Vector3(0.5f, 0.5f, 0f));
+
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactMask))
+        {
+            if (hit.collider.TryGetComponent(out KeypadButton keypadButton))
+            {
+                currentKeypadButton = keypadButton;
+                dotReticle.SetActive(true);
+            }
+        }
+    }
+
 
     #endregion
 
