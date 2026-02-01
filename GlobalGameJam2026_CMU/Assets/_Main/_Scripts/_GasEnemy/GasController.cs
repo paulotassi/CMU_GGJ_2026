@@ -23,7 +23,7 @@ public class GasController : MonoBehaviour
         if (gasParticle == null) return;
 
         ParticleSystem.EmissionModule emission = gasParticle.emission;
-        emission.rateOverTime = gasStrength;
+        emission.rateOverTime = gasStrength * 20;
     }
 
     public void setGasSize(float gasRadius)
