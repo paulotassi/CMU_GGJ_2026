@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
     public int playerHealth { get; private set; }          // Current player health
     public int gasMaskHealth { get; private set; }         // Current gas mask health
 
+    public GasMaskEquip gmEquipAnim;
+
     public bool maskEquipped { get; private set; }         // Whether the gas mask is currently equipped
 
 
@@ -94,7 +96,8 @@ public class PlayerController : MonoBehaviour
         playerHealth = startingPlayerHealth;                // Initialize player health
         gasMaskHealth = startingGasMaskHealth;              // Initialize mask health
         maskEquipped = false;                               // Mask starts unequipped
-        keyInventory = new int[maxHeldKeys];                      // Initialize key inventory
+        
+        keyInventory = new int[maxHeldKeys];                // Initialize key inventory
 
     }
 
@@ -179,6 +182,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
     #region Mask Management
 
     // Toggles gas mask equip state (cannot equip if broken)
@@ -190,7 +194,17 @@ public class PlayerController : MonoBehaviour
         }
         
         maskEquipped = !maskEquipped;                       // Toggle state
+        
         EventManager.CurrentMaskHealth(gasMaskHealth);
+
+        if (maskEquipped)
+        {
+            gmEquipAnim.EquipMask();
+        }
+        else if (!maskEquipped) 
+        { 
+            gmEquipAnim.UnequipMask();
+        } 
         //Add Mask On Off Sound
         //Change Abmient Sound to be in mask on State or Mask Off state
 
@@ -542,17 +556,10 @@ public class PlayerController : MonoBehaviour
 
     private void maskBroke()
     {
-        if (maskEquipped)
-        {
-            maskEquipped = false;
-        }
-
-        //EventManager.EquippedMaskBroke();
-
+        ToggleMaskEquip();
         if(currMaskAmount > 0)
         {
-            currMaskAmount--;
-            ToggleMaskEquip();
+            currMaskAmount--; 
         }
 
         
