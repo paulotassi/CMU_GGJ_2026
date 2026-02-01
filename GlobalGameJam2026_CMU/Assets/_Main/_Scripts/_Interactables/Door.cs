@@ -13,6 +13,12 @@ public class Door : Interactable
     
     
     public DoorType doorType;
+
+    public Animator doorAnimator;
+
+    public AudioClip doorOpenSound;
+
+    public bool opened;
     [Header("For Door with Key")]
     [SerializeField] private bool needsKey;
     
@@ -36,6 +42,10 @@ public class Door : Interactable
     }
     public override bool Interact(GameObject other)
     {
+        if(opened)
+        {
+            return true;
+        }
         
         Debug.Log("Trying to open door: " + doorID);
         PlayerController pc = other.GetComponent<PlayerController>();
@@ -44,6 +54,7 @@ public class Door : Interactable
             //Locked; doesn't have key
             //Broadcast door failed open
             //EventManager.FailedOpenDoor
+            
             return false;
         }
         if(doorType == DoorType.HasKeyPad && !keypadUnlocked)
@@ -57,7 +68,10 @@ public class Door : Interactable
         
         
         //Play door open animation
-        Destroy(transform.parent.gameObject);
+        opened = true;
+        doorAnimator.SetTrigger("DoorOpen");
+        SoundManager.sm.PlaySoundEffect(doorOpenSound, transform.position, false, true);
+        //Destroy(transform.parent.gameObject);
         return true;
     }
 

@@ -70,13 +70,22 @@ public class SoundManager : MonoBehaviour
     * @return The GameObject created to play the sound effect. 
     *         If looping is disabled, it is automatically destroyed after playback.
     */
-    public GameObject PlaySoundEffect(AudioClip clip, Vector3 pos, bool loop = false, bool spatial = false, float volume = 1.0f)
+    public GameObject PlaySoundEffect(AudioClip clip, Vector3? pos = null, bool loop = false, bool spatial = false, float volume = 1.0f)
     {
         GameObject soundEffect = new GameObject("soundEffect");
-        if (spatial)
+        if(pos == null)
         {
-            soundEffect.transform.position = normalizePosition(pos);
+            soundEffect.transform.SetParent(gameObject.transform);
+            soundEffect.transform.localPosition = Vector3.zero;
         }
+        else
+        {
+            soundEffect.transform.position = pos.Value;
+        }
+        // if (spatial)
+        // {
+        //     soundEffect.transform.position = normalizePosition(pos);
+        // }
 
 
         AudioSource source = soundEffect.AddComponent<AudioSource>();

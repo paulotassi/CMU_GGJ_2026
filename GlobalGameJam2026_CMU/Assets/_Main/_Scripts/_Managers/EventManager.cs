@@ -11,13 +11,17 @@ public static class EventManager
     public static event Action gameWin;
 
     // Fired when the player dies
-    public static event Action playerDeath;
+    public static event Action<float> playerDeath;
 
     // Fired whenever player health changes (send the new current health)
     public static event Action<int> currentPlayerHealth;
 
     // Fired whenever gas mask health changes (send the new current mask health)
     public static event Action<int> currentMaskHealth;
+
+    // TextEvents
+    public static event Action<string> TriggerText;
+
 
 
     #region Invoke Helpers
@@ -34,10 +38,15 @@ public static class EventManager
         gameWin?.Invoke();
     }
 
-    // Call this when the player dies
-    public static void PlayerDeath()
+    public static void TextTrigger(string intendedText)
     {
-        playerDeath?.Invoke();
+        TriggerText?.Invoke(intendedText);
+    }
+
+    // Call this when the player dies
+    public static void PlayerDeath(float deathEventDuration)
+    {
+        playerDeath?.Invoke(deathEventDuration);
     }
 
     // Call this whenever player health changes
