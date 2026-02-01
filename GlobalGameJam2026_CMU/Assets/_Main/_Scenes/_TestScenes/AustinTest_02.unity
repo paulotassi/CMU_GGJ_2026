@@ -1144,6 +1144,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761208131}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1002026960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5150853292870577449, guid: a2304107e6c96cd4989f442c61407aea, type: 3}
+  m_PrefabInstance: {fileID: 209275192481085386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc81d88386b64634f8f083d3184918ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &1042093539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,6 +2382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4627415104498478033, guid: a2304107e6c96cd4989f442c61407aea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7942141788650746610, guid: a2304107e6c96cd4989f442c61407aea, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2388,6 +2403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2421895639322214458, guid: 23483bc3cc7059647a57d60b904338d6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1002026960}
     - target: {fileID: 3569495067016897419, guid: 23483bc3cc7059647a57d60b904338d6, type: 3}
       propertyPath: m_Name
       value: Blood Splatter Canvas
