@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8961149887683206851}
   - component: {fileID: 6363067572242816580}
-  - component: {fileID: 7649038581651326481}
   - component: {fileID: 7328227843565653929}
   m_Layer: 0
   m_Name: Gas Mask Camera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7649038581651326481
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044138366037121402}
-  m_Enabled: 1
 --- !u!114 &7328227843565653929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +141,7 @@ GameObject:
   - component: {fileID: 6021086856585279184}
   - component: {fileID: 8638331207081706016}
   - component: {fileID: 2339384720583255978}
+  - component: {fileID: 3973306537940529820}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -311,6 +303,33 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &3973306537940529820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820893930001578813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde00eb3227ab6e4f820ca1088400264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCameraBob
+  playerController: {fileID: 5150853292870577449}
+  footstepSource: {fileID: 0}
+  footstepClips: []
+  footstepVolume: 0.9
+  walkBobFrequency: 6
+  sprintBobFrequency: 9
+  walkBobAmplitude: 0.05
+  sprintBobAmplitude: 0.07
+  returnSpeed: 12
+  moveThreshold: 0.1
+  impactDipAmount: 0.02
+  impactDipSharpness: 8
+  impactKickDegrees: 0.35
+  impactKickReturnSpeed: 18
+  dipTriggerThreshold: 0.95
 --- !u!1 &7942141788650746610
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +505,7 @@ MonoBehaviour:
   maxHeldKeys: 3
   startingPlayerHealth: 100
   startingGasMaskHealth: 100
+  gasDamageIntervalSeconds: 1
 --- !u!143 &1979655394936494767
 CharacterController:
   m_ObjectHideFlags: 0
@@ -519,13 +539,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5122418914035915762}
     m_Modifications:
+    - target: {fileID: 1571507643961618751, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579658944081283775, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792289182552578275, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2235721266080535391, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
       propertyPath: m_Name
       value: Gas Mask Visual
       objectReference: {fileID: 0}
+    - target: {fileID: 2235721266080535391, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476145332882602109, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576696756918689386, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634819271100542420, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2665103254984095049, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
       propertyPath: m_Name
       value: Gas Mask Visual Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2665103254984095049, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074819458346073622, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6388940765442477671, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -567,6 +623,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6825587254990303775, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209983551663582919, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915580723509144379, guid: 669d68cbdedb0fb4d9e1b4de326f2a8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -588,6 +656,10 @@ PrefabInstance:
     - target: {fileID: 4414386098407843117, guid: d516487f055994b42a1a1ec71e54093c, type: 3}
       propertyPath: m_Name
       value: Gas Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414386098407843117, guid: d516487f055994b42a1a1ec71e54093c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7819929264882969495, guid: d516487f055994b42a1a1ec71e54093c, type: 3}
       propertyPath: m_LocalPosition.x
