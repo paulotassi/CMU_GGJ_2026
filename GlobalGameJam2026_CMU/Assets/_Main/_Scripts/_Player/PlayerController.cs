@@ -289,6 +289,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactMask))
         {   
+            Debug.Log($"FIRST HIT: {hit.collider.name}");
             if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
             {
                 Debug.Log("Hi");

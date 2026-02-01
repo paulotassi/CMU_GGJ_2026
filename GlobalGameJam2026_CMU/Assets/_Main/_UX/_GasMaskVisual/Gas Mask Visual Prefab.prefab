@@ -353,6 +353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   animator: {fileID: 9099589178737239212}
+  equipMaskSound: {fileID: 8300000, guid: b4c3160a5a16a4bdf8db55669b13c0f3, type: 3}
+  unequipMaskSound: {fileID: 8300000, guid: 915649c32899a4d4abc088bf1b063a4a, type: 3}
 --- !u!1 &6825587254990303775
 GameObject:
   m_ObjectHideFlags: 0

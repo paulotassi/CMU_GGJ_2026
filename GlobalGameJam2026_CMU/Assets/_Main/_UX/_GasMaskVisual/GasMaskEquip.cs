@@ -10,6 +10,9 @@ public class GasMaskEquip : MonoBehaviour
     public static int equipGasMaskTriggerHash = Animator.StringToHash("EquipGasMask");
     public static int unequipGasMaskTriggerHash = Animator.StringToHash("UnequipGasMask");
 
+    public AudioClip equipMaskSound;
+    public AudioClip unequipMaskSound;
+
     /*private IEnumerator Start()
     {
         if (animator == null)
@@ -38,6 +41,7 @@ public class GasMaskEquip : MonoBehaviour
     public void EquipMask()
     {
         animator.SetTrigger(equipGasMaskTriggerHash); 
+        SoundManager.sm.PlaySoundEffect(equipMaskSound, transform.position);
     }
 
     /// <summary>
@@ -46,5 +50,6 @@ public class GasMaskEquip : MonoBehaviour
     public void UnequipMask()
     {
         animator.SetTrigger(unequipGasMaskTriggerHash); 
+        SoundManager.sm.PlaySoundEffect(unequipMaskSound, transform.position);
     }
 }
