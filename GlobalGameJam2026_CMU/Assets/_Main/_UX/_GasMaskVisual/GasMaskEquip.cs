@@ -10,7 +10,7 @@ public class GasMaskEquip : MonoBehaviour
     public static int equipGasMaskTriggerHash = Animator.StringToHash("EquipGasMask");
     public static int unequipGasMaskTriggerHash = Animator.StringToHash("UnequipGasMask");
 
-    private IEnumerator Start()
+    /*private IEnumerator Start()
     {
         if (animator == null)
         {
@@ -28,7 +28,7 @@ public class GasMaskEquip : MonoBehaviour
         }
 
         // === just for testing ===
-    }
+    }*/
     
 
     /// <summary>
