@@ -53,7 +53,11 @@ public class PlayerController : MonoBehaviour
     public int startingGasMaskHealth = 100;                // Initial gas mask durability
 
     public int playerHealth { get; private set; }          // Current player health
+
+    public bool playerAlive = true;
     public int gasMaskHealth { get; private set; }         // Current gas mask health
+
+    [SerializeField] private AudioClip deathSound;         // Death Sound
 
     public GasMaskEquip gmEquipAnim;
 
@@ -498,20 +502,24 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyDamageToPlayer(int damage)
     {
+        
         if (playerHealth > 1)
         {
+            playerAlive = true;
             playerHealth -= damage;
 
             // Add cough sounds here
 
             if (playerHealth < 0)
             {
+                
                 playerHealth = 0;
             }
         }
 
-        if (playerHealth <= 0)
+        if (playerHealth <= 0 && playerAlive)
         {
+            playerAlive=false;
             playerDied();
         }
     }
@@ -560,7 +568,10 @@ public class PlayerController : MonoBehaviour
 
     private void playerDied()
     {
+        SoundManager.sm.PlaySoundEffect(deathSound, transform.position, false, false);
         EventManager.PlayerDeath(5);
+        playerInput.Player.Move.Disable();
+        playerInput.Player.Look.Disable();
     }
 
     private void maskBroke()
@@ -571,7 +582,6 @@ public class PlayerController : MonoBehaviour
             currMaskAmount--; 
         }
 
-        
     }
 
     #endregion
