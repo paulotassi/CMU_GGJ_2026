@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void endGame(float deathEventDuration)
     {
+        Debug.Log("Game will Reset");
         StartCoroutine(gameEndCoroutine(deathEventDuration));
     }
 
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(deathEventDuration);
         //Load Game Start Scene
-        Debug.Log("Game will Reset");
+        
     }
 
 }
