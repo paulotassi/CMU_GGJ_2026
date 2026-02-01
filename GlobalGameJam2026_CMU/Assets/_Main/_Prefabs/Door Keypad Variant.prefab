@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7482028889028428235, guid: d3093be467854854a970e304e0ded8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2951280474370292064, guid: d3093be467854854a970e304e0ded8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1526969144898850858, guid: d3093be467854854a970e304e0ded8fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d3093be467854854a970e304e0ded8fa, type: 3}
       propertyPath: m_Name
       value: KeypadDoor
@@ -135,6 +147,10 @@ PrefabInstance:
     - target: {fileID: 3418130176762924527, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       propertyPath: m_TagString
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124275084816063973, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6124275084816063973, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       propertyPath: m_TagString

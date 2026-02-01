@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 0.1f;                  // Mouse look sensitivity (raw delta)
     public float controllerSensitivity = 120f;             // Controller look sensitivity (scaled)
     private float verticalVelocity;
+    [SerializeField] private LayerMask interactMask;
 
 
     [Header("Mask Info")]
@@ -286,7 +287,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = playerCamera.ViewportPointToRay(
             new Vector3(0.5f, 0.5f, 0f));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactMask))
         {   
             if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
             {
