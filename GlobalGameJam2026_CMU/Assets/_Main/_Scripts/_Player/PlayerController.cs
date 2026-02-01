@@ -273,12 +273,31 @@ public class PlayerController : MonoBehaviour
             new Vector3(0.5f, 0.5f, 0f));
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
-        {
+        {   
             if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
             {
                 Debug.Log("Hi");
                 keypadButton.PressButton();
                 //return;
+            }
+            if(hit.collider.TryGetComponent(out InteractableZone interactableZone))
+            {
+                
+                if (!interactableZone.interactPressed(gameObject))
+                {
+                    //
+                    Debug.Log("Door was locked or too many masks");
+                }
+                else
+                {
+                    //Successful interactions
+                    Debug.Log("Successful Interaction");
+                }
+                //currInteractableZone.
+            }
+            else
+            {
+                currInteractableZone = null;
             }
             //return;
         }
@@ -319,25 +338,16 @@ public class PlayerController : MonoBehaviour
         //     Debug.Log("I can grab this item!... well I just tried to");
         // }
         
-        if(currInteractableZone != null)
-        {
-            Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
-            if (!currInteractableZone.interactPressed())
-            {
-                //
-                Debug.Log("Door was locked or too many masks");
-            }
-            else
-            {
-                //Successful interaction
-                Debug.Log("Successful Interaction");
-            }
-        }
-        else
-        {
-            Debug.Log("I can grab this item!... well I just tried to");
-            return;
-        }
+        // if(currInteractableZone != null)
+        // {
+        //     Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
+            
+        // }
+        // else
+        // {
+        //     Debug.Log("I can grab this item!... well I just tried to");
+        //     return;
+        // }
 
     }
 

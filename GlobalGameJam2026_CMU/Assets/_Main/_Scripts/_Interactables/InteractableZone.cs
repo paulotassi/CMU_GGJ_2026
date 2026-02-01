@@ -31,12 +31,12 @@ public class InteractableZone : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             
-            Debug.Log("Player entered");
-            Debug.Log(other.GetType().ToString());
-            playerController = other.GetComponent<PlayerController>();
-            playerController.setInteractableZone(this);
-            isPlayerInZone = true;
-            interactable.setGrabbable(true);
+            // Debug.Log("Player entered");
+            // Debug.Log(other.GetType().ToString());
+            // playerController = other.GetComponent<PlayerController>();
+            // playerController.setInteractableZone(this);
+            // isPlayerInZone = true;
+            // interactable.setGrabbable(true);
             
         }
     }
@@ -45,20 +45,20 @@ public class InteractableZone : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            playerController.removeInteractableZone();
-            playerController = null;
-            isPlayerInZone = false;
-            interactable.setGrabbable(false);
+        //     playerController.removeInteractableZone();
+        //     playerController = null;
+        //     isPlayerInZone = false;
+        //     interactable.setGrabbable(false);
         }
     }
 
-    public bool interactPressed()
+    public bool interactPressed(GameObject player)
     {
-        if(isPlayerInZone && interactable.isGrabbable())
-        {   
-            return interactable.Interact(playerController.gameObject);
-        }
-
+        // if(isPlayerInZone && interactable.isGrabbable())
+        // {   
+        //     return interactable.Interact(playerController.gameObject);
+        // }
+        return interactable.Interact(player);
         //Should never occur
         Debug.Log("How did we even get here");
         return false;
