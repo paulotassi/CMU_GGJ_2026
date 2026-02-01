@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         //Test Input logic remove before finalization
         if (playerInput.Player.Next.ReadValue<float>() > 0)
         {
-            testInput();
+            //testInput();
         }
     }
 
@@ -310,6 +310,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.collider.CompareTag("Door"))
             {
+                Debug.Log("Hit a door");
                 EventManager.TextTrigger("It can't be opened from this side.");
                 return;
             }

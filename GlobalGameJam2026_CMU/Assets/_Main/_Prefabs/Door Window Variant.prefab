@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1959296535419212887, guid: 9362fbb8e017a79409037697b7fd48ae, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 3182642371265258729, guid: 9362fbb8e017a79409037697b7fd48ae, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -327,6 +331,10 @@ PrefabInstance:
       propertyPath: interactableZone
       value: 
       objectReference: {fileID: 8556525056623847021}
+    - target: {fileID: 3418130176762924527, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 6124275084816063973, guid: f515ac9b7504dc448b2057b8d139dbf9, type: 3}
       propertyPath: m_Layer
       value: 7
