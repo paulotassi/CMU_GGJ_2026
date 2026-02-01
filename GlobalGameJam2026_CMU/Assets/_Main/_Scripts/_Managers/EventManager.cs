@@ -1,62 +1,56 @@
-using UnityEngine;
-
 using System;
 using UnityEngine;
 
 public static class EventManager
 {
-    public static event Action OnPreRoundStart;
-    public static event Action OnInRoundStart;
-    public static event Action OnPostRoundStart;
-    public static event Action OnRoundEnd;
-    public static event Action OnCanSlap;
-    public static event Action OnFakeTrigger;
-    public static event Action<int> OnSlap;
-    public static event Action<int> OnFault;
-    public static event Action<int> OnReady;
 
-    public static void CanSlap()
+    // Fired when the game starts (ex: after loading finishes / player gains control)
+    public static event Action gameStart;
+
+    // Fired when the player wins the game
+    public static event Action gameWin;
+
+    // Fired when the player dies
+    public static event Action playerDeath;
+
+    // Fired whenever player health changes (send the new current health)
+    public static event Action<int> currentPlayerHealth;
+
+    // Fired whenever gas mask health changes (send the new current mask health)
+    public static event Action<int> currentMaskHealth;
+
+
+    #region Invoke Helpers
+
+    // Call this when the game starts
+    public static void GameStart()
     {
-        OnCanSlap?.Invoke();
+        gameStart?.Invoke();
     }
 
-    public static void RoundEnd()
+    // Call this when the player wins
+    public static void GameWin()
     {
-        OnRoundEnd?.Invoke();
+        gameWin?.Invoke();
     }
 
-    public static void FakeStartTrigger()
+    // Call this when the player dies
+    public static void PlayerDeath()
     {
-        OnFakeTrigger?.Invoke();
+        playerDeath?.Invoke();
     }
 
-    public static void PreRoundStart()
+    // Call this whenever player health changes
+    public static void CurrentPlayerHealth(int value)
     {
-        OnPreRoundStart?.Invoke();
+        currentPlayerHealth?.Invoke(value);
     }
 
-    public static void InRoundStart()
+    // Call this whenever mask health changes
+    public static void CurrentMaskHealth(int value)
     {
-        OnInRoundStart?.Invoke();
+        currentMaskHealth?.Invoke(value);
     }
 
-    public static void PostRoundStart()
-    {
-        OnPostRoundStart?.Invoke();
-    }
-
-    public static void Slapped(int player)
-    {
-        OnSlap?.Invoke(player);
-    }
-
-    public static void Faulted(int player)
-    {
-        OnFault?.Invoke(player);
-    }
-
-    public static void Readied(int player)
-    {
-        OnReady?.Invoke(player);
-    }
+    #endregion
 }

@@ -30,7 +30,9 @@ public class InteractableZone : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            
             Debug.Log("Player entered");
+            Debug.Log(other.GetType().ToString());
             playerController = other.GetComponent<PlayerController>();
             playerController.setInteractableZone(this);
             isPlayerInZone = true;
