@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 0.1f;                  // Mouse look sensitivity (raw delta)
     public float controllerSensitivity = 120f;             // Controller look sensitivity (scaled)
     private float verticalVelocity;
+    [SerializeField] private LayerMask interactMask;
 
 
     [Header("Mask Info")]
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     public int playerHealth { get; private set; }          // Current player health
     public int gasMaskHealth { get; private set; }         // Current gas mask health
+
+    public GasMaskEquip gmEquipAnim;
 
     public bool maskEquipped { get; private set; }         // Whether the gas mask is currently equipped
 
@@ -93,7 +96,8 @@ public class PlayerController : MonoBehaviour
         playerHealth = startingPlayerHealth;                // Initialize player health
         gasMaskHealth = startingGasMaskHealth;              // Initialize mask health
         maskEquipped = false;                               // Mask starts unequipped
-        keyInventory = new int[maxHeldKeys];                      // Initialize key inventory
+        
+        keyInventory = new int[maxHeldKeys];                // Initialize key inventory
 
     }
 
@@ -140,6 +144,12 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(MaskAnimation());
             
         }
+
+        //Test Input logic remove before finalization
+        if (playerInput.Player.Next.ReadValue<float>() > 0)
+        {
+            testInput();
+        }
     }
 
     #endregion
@@ -172,6 +182,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
     #region Mask Management
 
     // Toggles gas mask equip state (cannot equip if broken)
@@ -183,6 +194,19 @@ public class PlayerController : MonoBehaviour
         }
         
         maskEquipped = !maskEquipped;                       // Toggle state
+        
+        EventManager.CurrentMaskHealth(gasMaskHealth);
+
+        if (maskEquipped)
+        {
+            gmEquipAnim.EquipMask();
+        }
+        else if (!maskEquipped) 
+        { 
+            gmEquipAnim.UnequipMask();
+        } 
+        //Add Mask On Off Sound
+        //Change Abmient Sound to be in mask on State or Mask Off state
 
     }    
 
@@ -263,13 +287,32 @@ public class PlayerController : MonoBehaviour
         Ray ray = playerCamera.ViewportPointToRay(
             new Vector3(0.5f, 0.5f, 0f));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
-        {
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactMask))
+        {   
             if(hit.collider.TryGetComponent(out KeypadButton keypadButton))
             {
                 Debug.Log("Hi");
                 keypadButton.PressButton();
                 //return;
+            }
+            if(hit.collider.TryGetComponent(out InteractableZone interactableZone))
+            {
+                
+                if (!interactableZone.interactPressed(gameObject))
+                {
+                    //
+                    Debug.Log("Door was locked or too many masks");
+                }
+                else
+                {
+                    //Successful interactions
+                    Debug.Log("Successful Interaction");
+                }
+                //currInteractableZone.
+            }
+            else
+            {
+                currInteractableZone = null;
             }
             //return;
         }
@@ -310,25 +353,16 @@ public class PlayerController : MonoBehaviour
         //     Debug.Log("I can grab this item!... well I just tried to");
         // }
         
-        if(currInteractableZone != null)
-        {
-            Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
-            if (!currInteractableZone.interactPressed())
-            {
-                //
-                Debug.Log("Door was locked or too many masks");
-            }
-            else
-            {
-                //Successful interaction
-                Debug.Log("Successful Interaction");
-            }
-        }
-        else
-        {
-            Debug.Log("I can grab this item!... well I just tried to");
-            return;
-        }
+        // if(currInteractableZone != null)
+        // {
+        //     Debug.Log("Current Interactable Zone: " + currInteractableZone.getZoneType());
+            
+        // }
+        // else
+        // {
+        //     Debug.Log("I can grab this item!... well I just tried to");
+        //     return;
+        // }
 
     }
 
@@ -366,6 +400,8 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = (move * speed) + Vector3.up * verticalVelocity;
 
         characterController.Move(velocity * Time.deltaTime);
+
+        //Set player breathing speed Audio
     }
 
     #endregion
@@ -427,12 +463,20 @@ public class PlayerController : MonoBehaviour
 
         gasMaskHealth -= damage;
 
+        // Notify listeners that mask health changed
+        Debug.Log("I am sending a message to Event for other listners");
+        EventManager.CurrentMaskHealth(gasMaskHealth);
+
         if (gasMaskHealth > 0)
         {
             return;
         }
 
         gasMaskHealth = 0;
+
+        // Notify again after clamping to zero
+        EventManager.CurrentMaskHealth(gasMaskHealth);
+
         maskBroke();
 
         int leftoverDamage = damage - maskBefore;
@@ -448,6 +492,8 @@ public class PlayerController : MonoBehaviour
         if (playerHealth > 1)
         {
             playerHealth -= damage;
+
+            // Add cough sounds here
 
             if (playerHealth < 0)
             {
@@ -505,22 +551,15 @@ public class PlayerController : MonoBehaviour
 
     private void playerDied()
     {
-
+        EventManager.PlayerDeath(5);
     }
 
     private void maskBroke()
     {
-        if (maskEquipped)
-        {
-            maskEquipped = false;
-        }
-
-        //EventManager.EquippedMaskBroke();
-
+        ToggleMaskEquip();
         if(currMaskAmount > 0)
         {
-            currMaskAmount--;
-            ToggleMaskEquip();
+            currMaskAmount--; 
         }
 
         
@@ -528,7 +567,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Gizmos
+    #region DebugTools
 
     void OnDrawGizmos()
     {
@@ -545,6 +584,11 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(
             ray.origin,
             ray.origin + ray.direction * interactDistance);
+    }
+
+    private void testInput()
+    {
+        ApplyDamageToPlayer(25);
     }
 
     #endregion

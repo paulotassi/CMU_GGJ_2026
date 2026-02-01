@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1474f686d7a4844a3e011aae7ee5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bloodSplatterImage: {fileID: 0}
+  bloodSplatterImage: {fileID: 4527046865557452101}
+  player: {fileID: 0}
 --- !u!1 &6310134613495458457
 GameObject:
   m_ObjectHideFlags: 0
