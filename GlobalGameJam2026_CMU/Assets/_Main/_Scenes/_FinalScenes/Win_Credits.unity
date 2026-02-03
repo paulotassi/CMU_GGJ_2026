@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0, y: -29}
+  m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: -0.15, y: 0.5}
 --- !u!114 &134873795
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_text: "\nSUB-LETHAL\n\n\n\n\n\n\n\n\n\n\n\n-Production-\n\n\n\nOscar Mailman\r\n\n\n\r\n-Design-\n\n\n\nOscar
     Mailman\n\nLinda Wang\r\n\n\n\r\n-Programming- \n\n\n\nAustin Szema\n\nPaulo
     Tassi\n\nLinda Wang\n\nMax Zhou\r\n\n\n\r\n-Art- \n\n\n\nIan Accetta\n\nAidan
-    Terry\n\n Miles Mailman\r\n\n\n\r\n-Sound Design- \n\n\n\nLiam Neely\r\n\n\n\r\n-Additional
-    Art-\n\n\n\n Jessica Li  \n\nAyman Kone"
+    Terry\n\nMiles Mailman\r\n\n\n\r\n-Sound Design- \n\n\n\nLiam Neely\r\n\n\n\r\n-Guest
+    Art-\n\n\n\nJessica Li  \n\nAyman Kone"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751ea8d7ecbc6b040a0ab4fbe8a7c896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  scrollSpeed: 75
-  scrollDuration: 60
+  scrollSpeed: 120
+  scrollDuration: 75
   titleSceneName: TitleScene
 --- !u!1001 &275020950
 PrefabInstance:
